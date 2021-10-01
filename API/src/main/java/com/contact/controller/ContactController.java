@@ -24,7 +24,7 @@ import com.contact.repository.ContactRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:80")
+@CrossOrigin(origins = "http://localhost")
 public class ContactController {
     @Autowired
     private ContactRepository contactRepository;
