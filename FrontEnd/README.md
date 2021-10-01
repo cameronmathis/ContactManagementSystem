@@ -15,7 +15,7 @@ In order to build and run this web application, I suggest using the following do
 
 > docker build -t contact-management-system_front-end .
 
-> docker run -p 3000:3000 contact-management-system_front-end
+> docker run -p 80:3000 contact-management-system_front-end
 
 _\* The docker build command only needs to be ran once. After the image is created, you can simply use the docker run command._
 
