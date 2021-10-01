@@ -1,9 +1,7 @@
 FROM node:10
-RUN npm install -g serve # A simple webserver
-WORKDIR .
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "3000"]
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
+RUN npm i
+CMD ["npm", "run", "start"]
