@@ -32,9 +32,6 @@ _\* The two docker build commands only need to be ran once. After the images are
 
 ## Software details
 
-Hosting Platform: GCP Compute Engine <br/>
-Container Management Framework: Docker <br/>
-
 ### Front-end
 
 Library: React 0.1.0 <br/>
@@ -47,6 +44,11 @@ Project: Maven 3.8.2 <br/>
 Spring Boot: 2.5.5 <br/>
 Packaging: Jar <br/>
 Database: PostgreSQL 9.6 <br/>
+
+### Other
+
+Hosting Platform: GCP Compute Engine <br/>
+Container Management Framework: Docker <br/>
 
 ## Status
 
