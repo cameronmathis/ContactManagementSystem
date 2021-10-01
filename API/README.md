@@ -20,7 +20,7 @@ In order to build and run this API, I suggest using the following docker command
 
 > docker build -t contact-management-system_api .
 
-> docker-compose -p contact-management-system up
+> docker-compose -p contact-management-system_api up
 
 _\* The docker build command only needs to be ran once. After the image is created, you can simply run the docker-compose command._
 
