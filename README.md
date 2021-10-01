@@ -14,7 +14,7 @@ This is a Contact Management System Web Application.
 
 ## General info
 
-I developed this Contact Management System Web Application in order to familiarize myself with CRUD RESTful APIs.
+I developed this Contact Management System Full Stack in order to familiarize myself with CRUD RESTful APIs.
 
 ## Setup
 
