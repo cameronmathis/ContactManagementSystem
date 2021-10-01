@@ -32,14 +32,15 @@ _\* The two docker build commands only need to be ran once. After the images are
 
 ## Software details
 
+Hosting Platform: GCP Compute Engine <br/>
 Container Management Framework: Docker <br/>
 
-### [Front-end](https://github.com/cameronmathis/ContactManagementSystem-FrontEnd)
+### Front-end
 
 Library: React 0.1.0 <br/>
 JRE: Node 10.0 <br/>
 
-### [API](https://github.com/cameronmathis/ContactManagementSystem-API)
+### API
 
 Language: Java 11 <br/>
 Project: Maven 3.8.2 <br/>
