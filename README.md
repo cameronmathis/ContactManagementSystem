@@ -1,4 +1,4 @@
-### [View Online](34.132.35.75)
+### [View Online](http://34.132.35.75/)
 
 # Contact Management System
 
@@ -18,7 +18,7 @@ I developed this Contact Management System Full Stack Application in order to fa
 
 ## Setup
 
-In order to view, visit [this think](34.132.35.75). <br/>
+In order to view, visit [this think](http://34.132.35.75/). <br/>
 
 In order to build and run this web application, I suggest using the following docker commands.
 
