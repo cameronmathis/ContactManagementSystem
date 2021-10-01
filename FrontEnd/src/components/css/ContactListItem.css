@@ -1,0 +1,38 @@
+.contactListItem {
+  padding: 10px;
+  margin: 5px 5px;
+  width: 15vw;
+  height: min-content;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: 10px;
+  border: 1px solid var(--clr-medium);
+  overflow: hidden;
+}
+
+.contactListItem:hover {
+  cursor: pointer;
+  background-color: var(--clr-medium);
+}
+
+.contactListItem-selected {
+  padding: 10px;
+  margin: 5px 5px;
+  width: 15vw;
+  height: min-content;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--clr-accent);
+}
+
+.contactListItem-selected:hover {
+  cursor: pointer;
+}
+
+.contactListItem-text {
+  font-size: x-large;
+}

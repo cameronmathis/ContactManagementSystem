@@ -1,0 +1,66 @@
+.confirmDeleteContactModal > .makeStyles-paper-4 {
+  outline: 0;
+  border-radius: 10px;
+  background-color: var(--clr-light);
+}
+
+.confirmDeleteContactModal-content > header {
+  border-bottom: 2px solid var(--clr-medium);
+}
+
+.confirmDeleteContactModal-content > header > h2 {
+  margin: 5px;
+}
+
+.confirmDeleteContactModal-content > body {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 5px;
+}
+
+.confirmDeleteContactModal-buttons {
+  display: flex;
+  justify-content: right;
+}
+
+.confirmDeleteContactModal-button {
+  margin: 0px 5px 0px 5px;
+}
+
+.cancelDeleteContactButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.cancelDeleteContactButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-accent);
+}
+
+.cancelDeleteContactButton > .MuiButton-contained:hover {
+  background-color: var(--clr-accent-dark);
+}
+
+.cancelDeleteContactButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.submitDeleteContactButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.submitDeleteContactButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-destructive);
+}
+
+.submitDeleteContactButton > .MuiButton-contained:hover {
+  background-color: var(--clr-destructive-hover);
+}
+
+.submitDeleteContactButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}

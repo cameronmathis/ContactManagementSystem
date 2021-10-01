@@ -1,0 +1,44 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 90vw;
+  min-width: 370px;
+  height: 6vh;
+  margin: 0px auto;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--clr-medium);
+}
+
+.headerLeft {
+  padding: 10px;
+}
+
+.headerRight {
+  padding: 10px;
+}
+
+.newContactButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.newContactButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-accent);
+}
+
+.newContactButton > .MuiButton-contained:hover {
+  background-color: var(--clr-accent-dark);
+}
+
+.newContactButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.newContactButton-spacer {
+  width: 5px;
+}

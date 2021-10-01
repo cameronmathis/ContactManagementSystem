@@ -1,0 +1,8 @@
+{
+  "short_name": "React App",
+  "name": "React App Template",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#111111",
+  "background_color": "#FFFEFC"
+}

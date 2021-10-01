@@ -1,0 +1,11 @@
+.body {
+  position: fixed;
+  top: 6vh; /* Header height */
+  width: 90vw;
+  min-width: 370px;
+  height: 100%;
+  margin-top: 4vh;
+  display: flex;
+  -webkit-box-align: center;
+  justify-content: space-between;
+}

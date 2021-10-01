@@ -1,0 +1,94 @@
+.createContactModal > .makeStyles-paper-2 {
+  outline: 0;
+  border-radius: 10px;
+  background-color: var(--clr-light);
+}
+
+.createContactModal-content > header {
+  border-bottom: 2px solid var(--clr-medium);
+}
+
+.createContactModal-content > header > h2 {
+  margin: 5px;
+}
+
+.createContactModal-content > body {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+}
+
+.createContactModal-input {
+  line-height: 30px;
+  font-size: larger;
+  margin: 5px 0px;
+  padding: 0px 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--clr-dark);
+  background-color: var(--clr-medium);
+}
+
+.createContactModal-input-invalid {
+  line-height: 30px;
+  font-size: larger;
+  margin: 5px 0px;
+  padding: 0px 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--clr-destructive-hover);
+  background-color: var(--clr-medium);
+}
+
+.createContactModal-input-invalid::placeholder {
+  color: var(--clr-destructive-hover);
+}
+
+.createContactModal-buttons {
+  display: flex;
+  justify-content: right;
+}
+
+.createContactModal-button {
+  margin: 0px 5px 0px 5px;
+}
+
+.cancelNewContactButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.cancelNewContactButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-destructive);
+}
+
+.cancelNewContactButton > .MuiButton-contained:hover {
+  background-color: var(--clr-destructive-hover);
+}
+
+.cancelNewContactButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.submitNewContactButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.submitNewContactButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-constructive);
+}
+
+.submitNewContactButton > .MuiButton-contained:hover {
+  background-color: var(--clr-constructive-hover);
+}
+
+.submitNewContactButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}

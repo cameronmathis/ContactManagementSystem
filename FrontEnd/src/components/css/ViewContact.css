@@ -1,0 +1,90 @@
+.openedContactView-container > header {
+  border-bottom: 2px solid var(--clr-medium);
+}
+
+.openedContactView-container > header > h2 {
+  margin: 0px 5px 5px 5px;
+}
+
+.openedContactView-container > body {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+}
+
+.openedContactField-container {
+  margin: 10px 0px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--clr-medium);
+}
+
+.openedContactField-label {
+  width: min-content;
+  font-size: larger;
+  margin: 0px 5px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--clr-accent);
+}
+
+.openedContactField-value {
+  width: 100%;
+  line-height: 30px;
+  font-size: larger;
+  margin: 5px 0px;
+  padding: 0px 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--clr-dark);
+  background-color: var(--clr-medium);
+}
+
+.openedContactView-buttons {
+  display: flex;
+  justify-content: right;
+}
+
+.openedContactView-button {
+  margin: 0px 5px 0px 5px;
+}
+
+.deleteContactButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.deleteContactButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-destructive);
+}
+
+.deleteContactButton > .MuiButton-contained:hover {
+  background-color: var(--clr-destructive-hover);
+}
+
+.deleteContactButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.editContactButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.editContactButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-accent);
+}
+
+.editContactButton > .MuiButton-contained:hover {
+  background-color: var(--clr-accent-dark);
+}
+
+.editContactButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
