@@ -22,7 +22,7 @@ In order to view, visit [this think](https://github.com/cameronmathis/ContactMan
 
 In order to build and run this web application, I suggest using the following docker commands.
 
-> docker build -t contact-management-system_front-end ./Front-end/
+> docker build -t contact-management-system_front-end ./FrontEnd/
 
 > docker build -t contact-management-system_api ./API/
 
