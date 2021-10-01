@@ -51,7 +51,7 @@ Database: PostgreSQL 9.6 <br/>
 ## Status
 
 Version: 1.0.0 <br/>
-Project is: _finished_
+Project is: _in progress_
 
 ## Contact
 
