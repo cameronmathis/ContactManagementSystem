@@ -1,5 +1,3 @@
-### [View Online](http://34.132.35.75/)
-
 # Contact Management System
 
 This is a Contact Management System Web Application.
@@ -17,8 +15,6 @@ This is a Contact Management System Web Application.
 I developed this Contact Management System Full Stack Application in order to familiarize myself with CRUD RESTful APIs.
 
 ## Setup
-
-In order to view, visit [this think](http://34.132.35.75/). <br/>
 
 In order to build and run this web application, I suggest using the following docker commands.
 
