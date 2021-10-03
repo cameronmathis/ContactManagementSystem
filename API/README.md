@@ -22,6 +22,8 @@ In order to build and run this API, I suggest using the following docker command
 
 > docker-compose -p contact-management-system_api up
 
+You can then use the ContactManagementSystem-collection.json file to make API calls.
+
 _\* The docker build command only needs to be ran once. After the image is created, you can simply run the docker-compose command._
 
 ## Software details
