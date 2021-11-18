@@ -24,7 +24,7 @@ import com.contact.repository.ContactRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = { "http://localhost", "http://localhost:80", "http://localhost:8080" })
 public class ContactController {
     @Autowired
     private ContactRepository contactRepository;
@@ -36,12 +36,12 @@ public class ContactController {
 
     @GetMapping("/contacts/{id}")
     public ResponseEntity<Contact> getContactById(@PathVariable(value = "id") Long contactId)
-        throws ResourceNotFoundException {
+            throws ResourceNotFoundException {
         Contact contact = contactRepository.findById(contactId)
-          .orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + contactId));
+                .orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + contactId));
         return ResponseEntity.ok().body(contact);
     }
-    
+
     @PostMapping("/contacts")
     public Contact createContact(@Valid @RequestBody Contact contact) {
         return contactRepository.save(contact);
@@ -49,9 +49,9 @@ public class ContactController {
 
     @PutMapping("/contacts/{id}")
     public ResponseEntity<Contact> updateContact(@PathVariable(value = "id") Long contactId,
-         @Valid @RequestBody Contact contactDetails) throws ResourceNotFoundException {
+            @Valid @RequestBody Contact contactDetails) throws ResourceNotFoundException {
         Contact contact = contactRepository.findById(contactId)
-        .orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + contactId));
+                .orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + contactId));
 
         contact.setLastName(contactDetails.getLastName());
         contact.setFirstName(contactDetails.getFirstName());
@@ -63,9 +63,9 @@ public class ContactController {
 
     @DeleteMapping("/contacts/{id}")
     public Map<String, Boolean> deleteContact(@PathVariable(value = "id") Long contactId)
-         throws ResourceNotFoundException {
+            throws ResourceNotFoundException {
         Contact contact = contactRepository.findById(contactId)
-       .orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + contactId));
+                .orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + contactId));
 
         contactRepository.delete(contact);
         Map<String, Boolean> response = new HashMap<>();
