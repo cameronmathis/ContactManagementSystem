@@ -24,7 +24,7 @@ In order to build and run this web application, I suggest using the following do
 
 > docker-compose -p contact-management-system up
 
-You can then visit http://localhost/ to view the web application.
+You can then visit <http://localhost/> to view the web application.
 
 _\* The two docker build commands only need to be ran once. After the images are created, you can simply run the docker-compose command._
 
