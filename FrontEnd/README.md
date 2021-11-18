@@ -17,7 +17,7 @@ In order to build and run this web application, I suggest using the following do
 
 > docker run -d --rm -p 80:3000 --name contact-management-system_FrontEnd contact-management-system_front-end
 
-You can then visit http://localhost/ to view the web application.
+You can then visit <http://localhost/> to view the web application.
 
 _\* The docker build command only needs to be ran once. After the image is created, you can simply use the docker run command._
 
