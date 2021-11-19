@@ -1,17 +1,21 @@
-name: Test Production Build
+name: Test Develop Build React
 
 on:
   push:
     branches:
-      - production
+      - develop
   pull_request:
     branches:
-      - production
+      - develop
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./FrontEnd
 
     steps:
       - name: Checkout code
