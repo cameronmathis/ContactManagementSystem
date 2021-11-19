@@ -1,4 +1,4 @@
-name: React Build
+name: Maven Build
 
 on:
   push:
