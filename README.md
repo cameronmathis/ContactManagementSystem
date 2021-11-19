@@ -1,4 +1,4 @@
-[![React Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml)
+[![React Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml/badge.svg?branch=production)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml)
 
 # Contact Management System
 
