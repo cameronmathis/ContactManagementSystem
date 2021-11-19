@@ -11,6 +11,7 @@ class Body extends React.Component {
       openedContactId: "",
     };
   }
+
   openContact = (contactId) => {
     this.setState({ openedContactId: contactId });
   };
