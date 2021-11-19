@@ -14,7 +14,6 @@ This is the front-end for a Contact Management System Web Application.
 In order to build and run this web application, I suggest using the following docker commands.
 
 > docker build -t contact-management-system_front-end .
-
 > docker run -d --rm -p 80:3000 --name contact-management-system_FrontEnd contact-management-system_front-end
 
 You can then visit <http://localhost/> to view the web application.
