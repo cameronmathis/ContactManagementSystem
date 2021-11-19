@@ -1,5 +1,3 @@
-[![React Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml)
-
 # Contact Management System
 
 This is a Contact Management System Web Application.
