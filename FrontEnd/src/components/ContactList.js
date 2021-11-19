@@ -29,17 +29,19 @@ class ContactList extends React.Component {
 
   render() {
     return (
-      <div className="contactList">
+      <ul className="contactList">
         {this.state.contacts.map((contact) => (
-          <ContactListItem
-            openContact={this.props.openContact}
-            openedContactId={this.props.openedContactId}
-            contactId={contact.id}
-            firstName={contact.firstName}
-            lastName={contact.lastName}
-          />
+          <li key={contact.id}>
+            <ContactListItem
+              openContact={this.props.openContact}
+              openedContactId={this.props.openedContactId}
+              contactId={contact.id}
+              firstName={contact.firstName}
+              lastName={contact.lastName}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     );
   }
 }

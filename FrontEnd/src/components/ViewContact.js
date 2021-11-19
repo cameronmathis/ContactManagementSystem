@@ -35,6 +35,7 @@ class OpenContact extends React.Component {
   componentWillReceiveProps(props) {
     GetContactById(props.contactId).then((contact) => {
       this.setState({
+        contactId: contact.id,
         firstName: contact.firstName,
         lastName: contact.lastName,
         phoneNumber: contact.phoneNumber,
