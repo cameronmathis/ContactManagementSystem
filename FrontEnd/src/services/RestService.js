@@ -13,7 +13,7 @@ export function CreateContact(firstName, lastName, phoneNumber, emailAddress) {
     }),
   };
 
-  fetch(API_URL, requestOptions).then((data) => data.json());
+  return fetch(API_URL, requestOptions).then((data) => data.json());
 }
 
 export function GetContactById(contactId) {
@@ -56,5 +56,7 @@ export function DeleteContactById(contactId) {
     method: "DELETE",
   };
 
-  fetch(API_URL + "/" + contactId, requestOptions).then((data) => data.json());
+  return fetch(API_URL + "/" + contactId, requestOptions).then((data) =>
+    data.json()
+  );
 }

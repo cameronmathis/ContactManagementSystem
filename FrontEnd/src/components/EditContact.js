@@ -29,14 +29,18 @@ class OpenContact extends React.Component {
   }
 
   componentDidMount() {
-    GetContactById(this.state.contactId).then((contact) => {
-      this.setState({
-        firstName: contact.firstName,
-        lastName: contact.lastName,
-        phoneNumber: contact.phoneNumber,
-        emailAddress: contact.emailAddress,
+    GetContactById(this.state.contactId)
+      .then((contact) => {
+        this.setState({
+          firstName: contact.firstName,
+          lastName: contact.lastName,
+          phoneNumber: contact.phoneNumber,
+          emailAddress: contact.emailAddress,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    });
   }
 
   handleInputChange = (fieldName) => (event) => {

@@ -13,18 +13,22 @@ class ContactList extends React.Component {
   }
 
   componentDidMount() {
-    GetAllContacts().then((contacts) => {
-      const sortedContacts = contacts.sort((a, b) =>
-        a.lastName > b.lastName
-          ? 1
-          : a.lastName === b.lastName
-          ? a.firstName > b.firstName
+    GetAllContacts()
+      .then((contacts) => {
+        const sortedContacts = contacts.sort((a, b) =>
+          a.lastName > b.lastName
             ? 1
+            : a.lastName === b.lastName
+            ? a.firstName > b.firstName
+              ? 1
+              : -1
             : -1
-          : -1
-      );
-      this.setState({ contacts: sortedContacts });
-    });
+        );
+        this.setState({ contacts: sortedContacts });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {

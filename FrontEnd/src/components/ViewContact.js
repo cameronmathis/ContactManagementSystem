@@ -22,26 +22,34 @@ class OpenContact extends React.Component {
   }
 
   componentDidMount() {
-    GetContactById(this.props.contactId).then((contact) => {
-      this.setState({
-        firstName: contact.firstName,
-        lastName: contact.lastName,
-        phoneNumber: contact.phoneNumber,
-        emailAddress: contact.emailAddress,
+    GetContactById(this.props.contactId)
+      .then((contact) => {
+        this.setState({
+          firstName: contact.firstName,
+          lastName: contact.lastName,
+          phoneNumber: contact.phoneNumber,
+          emailAddress: contact.emailAddress,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    });
   }
 
   componentWillReceiveProps(props) {
-    GetContactById(props.contactId).then((contact) => {
-      this.setState({
-        contactId: contact.id,
-        firstName: contact.firstName,
-        lastName: contact.lastName,
-        phoneNumber: contact.phoneNumber,
-        emailAddress: contact.emailAddress,
+    GetContactById(props.contactId)
+      .then((contact) => {
+        this.setState({
+          contactId: contact.id,
+          firstName: contact.firstName,
+          lastName: contact.lastName,
+          phoneNumber: contact.phoneNumber,
+          emailAddress: contact.emailAddress,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    });
   }
 
   showConfirmDeleteContactModal = () => {

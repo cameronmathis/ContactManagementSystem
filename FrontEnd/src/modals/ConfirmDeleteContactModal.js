@@ -48,7 +48,9 @@ const ConfirmDeleteContactModal = ({
   };
 
   const submitDeleteContact = () => {
-    DeleteContactById(contactId);
+    DeleteContactById(contactId).catch((error) => {
+      console.log(error);
+    });
     hideConfirmDeleteContactModal();
     window.location.reload();
   };

@@ -72,7 +72,11 @@ const CreateContactModal = ({
 
   const submitNewContact = () => {
     if (areValuesValid()) {
-      CreateContact(firstName, lastName, phoneNumber, emailAddress);
+      CreateContact(firstName, lastName, phoneNumber, emailAddress).catch(
+        (error) => {
+          console.log(error);
+        }
+      );
       setCreateContactModalShown(false);
       window.location.reload();
     }
