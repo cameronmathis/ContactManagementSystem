@@ -6,8 +6,20 @@ import {
   getIsPhoneNumberValid,
   getIsEmailAddressValid,
 } from "../services/ValidationService";
+// import constants
+import {
+  snackbarPosition,
+  snackbarDuration,
+  fetchContactFailMessage,
+  editSuccessMessage,
+  editFailMessage,
+} from "../constants/Snackbar";
 // import icons
 import Button from "@material-ui/core/Button";
+// import snackbar
+import Snackbar from "@material-ui/core/Snackbar";
+// import alert
+import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/EditContact.css";
 
@@ -15,7 +27,6 @@ class OpenContact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isConfirmDeleteContactModalShown: false,
       contactId: props.contactId,
       firstName: "",
       lastName: "",
@@ -25,7 +36,11 @@ class OpenContact extends React.Component {
       isLastNameValid: true,
       isPhoneNumberValid: true,
       isEmailAddressValid: true,
+      isSnackbarOpen: false,
+      didFetchSuccessfully: true,
+      didEditSuccessfully: "",
     };
+    this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }
 
   componentDidMount() {
@@ -36,10 +51,32 @@ class OpenContact extends React.Component {
           lastName: contact.lastName,
           phoneNumber: contact.phoneNumber,
           emailAddress: contact.emailAddress,
+          didFetchSuccessfully: true,
         });
       })
       .catch((error) => {
         console.log(error);
+        this.setState({ didFetchSuccessfully: false });
+        this.setState({ isSnackbarOpen: true });
+      });
+  }
+
+  componentWillReceiveProps(props) {
+    GetContactById(props.contactId)
+      .then((contact) => {
+        this.setState({
+          contactId: contact.id,
+          firstName: contact.firstName,
+          lastName: contact.lastName,
+          phoneNumber: contact.phoneNumber,
+          emailAddress: contact.emailAddress,
+          didFetchSuccessfully: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ didFetchSuccessfully: false });
+        this.setState({ isSnackbarOpen: true });
       });
   }
 
@@ -48,7 +85,7 @@ class OpenContact extends React.Component {
   };
 
   cancelEditContact = () => {
-    this.props.setIsNotEditing();
+    this.props.setIsEditing(false);
   };
 
   submitEditContact = () => {
@@ -59,8 +96,17 @@ class OpenContact extends React.Component {
         this.state.lastName,
         this.state.phoneNumber,
         this.state.emailAddress
-      );
-      this.props.setIsNotEditing();
+      )
+        .then(() => {
+          this.setState({ didEditSuccessfully: true });
+          this.setState({ isSnackbarOpen: true });
+          this.props.setIsEditing(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          this.setState({ didEditSuccessfully: false });
+          this.setState({ isSnackbarOpen: true });
+        });
     }
   };
 
@@ -109,104 +155,151 @@ class OpenContact extends React.Component {
     return result;
   };
 
+  handleCloseSnackbar() {
+    this.setState({ isSnackbarOpen: false });
+  }
+
   render() {
     return (
       <div className="openedContactEdit-container">
-        <header>
-          <h2>Edit Contact</h2>
-        </header>
-        <body>
-          <div className="firstNameInput-container openedContactInput-container">
-            {this.state.isFirstNameValid ? (
-              <p className="firstNameInput-label openedContactInput-label">
-                First Name
-              </p>
-            ) : (
-              <p className="firstNameInput-label openedContactInput-label-invalid">
-                First Name
-              </p>
-            )}
-            <input
-              className="firstName-input openedContact-input"
-              value={this.state.firstName}
-              onChange={this.handleInputChange("firstName")}
-              placeholder="First Name"
-            />
+        {this.state.didFetchSuccessfully ? (
+          <div>
+            <header>
+              <h2>Edit Contact</h2>
+            </header>
+            <body>
+              <div className="firstNameInput-container openedContactInput-container">
+                {this.state.isFirstNameValid ? (
+                  <p className="firstNameInput-label openedContactInput-label">
+                    First Name
+                  </p>
+                ) : (
+                  <p className="firstNameInput-label openedContactInput-label-invalid">
+                    First Name
+                  </p>
+                )}
+                <input
+                  className="firstName-input openedContact-input"
+                  value={this.state.firstName}
+                  onChange={this.handleInputChange("firstName")}
+                  placeholder="First Name"
+                />
+              </div>
+              <div className="lastNameInput-container openedContactInput-container">
+                {this.state.isLastNameValid ? (
+                  <p className="lastNameInput-label openedContactInput-label">
+                    Last Name
+                  </p>
+                ) : (
+                  <p className="lastNameInput-label openedContactInput-label-invalid">
+                    Last Name
+                  </p>
+                )}
+                <input
+                  className="lastName-input openedContact-input"
+                  value={this.state.lastName}
+                  onChange={this.handleInputChange("lastName")}
+                  placeholder="Last Name"
+                />
+              </div>
+              <div className="phoneNumberInput-container openedContactInput-container">
+                {this.state.isPhoneNumberValid ? (
+                  <p className="phoneNumberInput-label openedContactInput-label">
+                    Phone Number
+                  </p>
+                ) : (
+                  <p className="phoneNumberInput-label openedContactInput-label-invalid">
+                    Phone Number
+                  </p>
+                )}
+                <input
+                  className="phoneNumber-input openedContact-input"
+                  value={this.state.phoneNumber}
+                  onChange={this.handleInputChange("phoneNumber")}
+                  placeholder="Phone Number"
+                />
+              </div>
+              <div className="emailAddressInput-container openedContactInput-container">
+                {this.state.isEmailAddressValid ? (
+                  <p className="emailAddressInput-label openedContactInput-label">
+                    Email Address
+                  </p>
+                ) : (
+                  <p className="emailAddressInput-label openedContactInput-label-invalid">
+                    Email Address
+                  </p>
+                )}
+                <input
+                  className="emailAddress-input openedContact-input"
+                  value={this.state.emailAddress}
+                  onChange={this.handleInputChange("emailAddress")}
+                  placeholder="Email Address"
+                />
+              </div>
+            </body>
+            <footer>
+              <div className="openedContactEdit-buttons">
+                <div className="cancelEditContactButton openedContactEdit-button">
+                  <Button
+                    variant="contained"
+                    className="cancelEditContact-button"
+                    onClick={this.cancelEditContact}
+                  >
+                    <div className="cancelNewContactButton-text">Cancel</div>
+                  </Button>
+                </div>
+                <div className="submitEditContactButton openedContactEdit-button">
+                  <Button
+                    variant="contained"
+                    className="submitEditContact-button"
+                    onClick={this.submitEditContact}
+                  >
+                    <div className="submitEditContactButton-text">Save</div>
+                  </Button>
+                </div>
+              </div>
+            </footer>
+            <Snackbar
+              anchorOrigin={snackbarPosition}
+              open={this.state.isSnackbarOpen}
+              autoHideDuration={snackbarDuration}
+              onClose={this.handleCloseSnackbar}
+            >
+              {this.state.didEditSuccessfully ? (
+                <Alert
+                  onClose={this.handleCloseSnackbar}
+                  severity="success"
+                  sx={{ width: "100%" }}
+                >
+                  {editSuccessMessage}
+                </Alert>
+              ) : (
+                <Alert
+                  onClose={this.handleCloseSnackbar}
+                  severity="error"
+                  sx={{ width: "100%" }}
+                >
+                  {editFailMessage}
+                </Alert>
+              )}
+            </Snackbar>
           </div>
-          <div className="lastNameInput-container openedContactInput-container">
-            {this.state.isLastNameValid ? (
-              <p className="lastNameInput-label openedContactInput-label">
-                Last Name
-              </p>
-            ) : (
-              <p className="lastNameInput-label openedContactInput-label-invalid">
-                Last Name
-              </p>
-            )}
-            <input
-              className="lastName-input openedContact-input"
-              value={this.state.lastName}
-              onChange={this.handleInputChange("lastName")}
-              placeholder="Last Name"
-            />
-          </div>
-          <div className="phoneNumberInput-container openedContactInput-container">
-            {this.state.isPhoneNumberValid ? (
-              <p className="phoneNumberInput-label openedContactInput-label">
-                Phone Number
-              </p>
-            ) : (
-              <p className="phoneNumberInput-label openedContactInput-label-invalid">
-                Phone Number
-              </p>
-            )}
-            <input
-              className="phoneNumber-input openedContact-input"
-              value={this.state.phoneNumber}
-              onChange={this.handleInputChange("phoneNumber")}
-              placeholder="Phone Number"
-            />
-          </div>
-          <div className="emailAddressInput-container openedContactInput-container">
-            {this.state.isEmailAddressValid ? (
-              <p className="emailAddressInput-label openedContactInput-label">
-                Email Address
-              </p>
-            ) : (
-              <p className="emailAddressInput-label openedContactInput-label-invalid">
-                Email Address
-              </p>
-            )}
-            <input
-              className="emailAddress-input openedContact-input"
-              value={this.state.emailAddress}
-              onChange={this.handleInputChange("emailAddress")}
-              placeholder="Email Address"
-            />
-          </div>
-        </body>
-        <footer>
-          <div className="openedContactEdit-buttons">
-            <div className="cancelEditContactButton openedContactEdit-button">
-              <Button
-                variant="contained"
-                className="cancelEditContact-button"
-                onClick={this.cancelEditContact}
-              >
-                <div className="cancelNewContactButton-text">Cancel</div>
-              </Button>
-            </div>
-            <div className="submitEditContactButton openedContactEdit-button">
-              <Button
-                variant="contained"
-                className="submitEditContact-button"
-                onClick={this.submitEditContact}
-              >
-                <div className="submitEditContactButton-text">Save</div>
-              </Button>
-            </div>
-          </div>
-        </footer>
+        ) : (
+          <Snackbar
+            anchorOrigin={snackbarPosition}
+            open={this.state.isSnackbarOpen}
+            autoHideDuration={snackbarDuration}
+            onClose={this.handleCloseSnackbar}
+          >
+            <Alert
+              onClose={this.handleCloseSnackbar}
+              severity="error"
+              sx={{ width: "100%" }}
+            >
+              {fetchContactFailMessage}
+            </Alert>
+          </Snackbar>
+        )}
       </div>
     );
   }

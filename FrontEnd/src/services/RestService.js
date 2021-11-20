@@ -48,7 +48,9 @@ export function UpdateContactById(
     }),
   };
 
-  fetch(API_URL + "/" + contactId, requestOptions).then((data) => data.json());
+  return fetch(API_URL + "/" + contactId, requestOptions).then((data) =>
+    data.json()
+  );
 }
 
 export function DeleteContactById(contactId) {

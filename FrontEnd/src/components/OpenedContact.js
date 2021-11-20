@@ -18,12 +18,8 @@ class OpenedContact extends React.Component {
     this.setState({ contactId: props.contactId });
   }
 
-  setIsEditing = () => {
-    this.setState({ isEditing: true });
-  };
-
-  setIsNotEditing = () => {
-    this.setState({ isEditing: false });
+  setIsEditing = (bool) => {
+    this.setState({ isEditing: bool });
   };
 
   render() {
@@ -31,7 +27,7 @@ class OpenedContact extends React.Component {
       <div className="openedContact-container">
         {this.state.isEditing ? (
           <EditContact
-            setIsNotEditing={this.setIsNotEditing}
+            setIsEditing={this.setIsEditing}
             contactId={this.state.contactId}
           />
         ) : (
