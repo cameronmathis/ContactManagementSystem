@@ -11,8 +11,6 @@ import {
   snackbarPosition,
   snackbarDuration,
   fetchContactFailMessage,
-  editSuccessMessage,
-  editFailMessage,
 } from "../constants/Snackbar";
 // import icons
 import Button from "@material-ui/core/Button";
@@ -23,10 +21,11 @@ import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/EditContact.css";
 
-class OpenContact extends React.Component {
+class EditContact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      didFetchSuccessfully: true,
       contactId: props.contactId,
       firstName: "",
       lastName: "",
@@ -37,7 +36,6 @@ class OpenContact extends React.Component {
       isPhoneNumberValid: true,
       isEmailAddressValid: true,
       isSnackbarOpen: false,
-      didFetchSuccessfully: true,
       didEditSuccessfully: "",
     };
     this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
@@ -47,30 +45,11 @@ class OpenContact extends React.Component {
     GetContactById(this.state.contactId)
       .then((contact) => {
         this.setState({
+          didFetchSuccessfully: true,
           firstName: contact.firstName,
           lastName: contact.lastName,
           phoneNumber: contact.phoneNumber,
           emailAddress: contact.emailAddress,
-          didFetchSuccessfully: true,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({ didFetchSuccessfully: false });
-        this.setState({ isSnackbarOpen: true });
-      });
-  }
-
-  componentWillReceiveProps(props) {
-    GetContactById(props.contactId)
-      .then((contact) => {
-        this.setState({
-          contactId: contact.id,
-          firstName: contact.firstName,
-          lastName: contact.lastName,
-          phoneNumber: contact.phoneNumber,
-          emailAddress: contact.emailAddress,
-          didFetchSuccessfully: true,
         });
       })
       .catch((error) => {
@@ -86,6 +65,7 @@ class OpenContact extends React.Component {
 
   cancelEditContact = () => {
     this.props.setIsEditing(false);
+    this.props.setIsViewing(true);
   };
 
   submitEditContact = () => {
@@ -98,14 +78,15 @@ class OpenContact extends React.Component {
         this.state.emailAddress
       )
         .then(() => {
-          this.setState({ didEditSuccessfully: true });
-          this.setState({ isSnackbarOpen: true });
           this.props.setIsEditing(false);
+          this.props.setIsViewing(true);
+          this.props.setDidEditSuccessfully(true);
+          this.props.setIsSnackbarOpen(true);
         })
         .catch((error) => {
           console.log(error);
-          this.setState({ didEditSuccessfully: false });
-          this.setState({ isSnackbarOpen: true });
+          this.props.setDidEditSuccessfully(false);
+          this.props.setIsSnackbarOpen(true);
         });
     }
   };
@@ -259,30 +240,6 @@ class OpenContact extends React.Component {
                 </div>
               </div>
             </footer>
-            <Snackbar
-              anchorOrigin={snackbarPosition}
-              open={this.state.isSnackbarOpen}
-              autoHideDuration={snackbarDuration}
-              onClose={this.handleCloseSnackbar}
-            >
-              {this.state.didEditSuccessfully ? (
-                <Alert
-                  onClose={this.handleCloseSnackbar}
-                  severity="success"
-                  sx={{ width: "100%" }}
-                >
-                  {editSuccessMessage}
-                </Alert>
-              ) : (
-                <Alert
-                  onClose={this.handleCloseSnackbar}
-                  severity="error"
-                  sx={{ width: "100%" }}
-                >
-                  {editFailMessage}
-                </Alert>
-              )}
-            </Snackbar>
           </div>
         ) : (
           <Snackbar
@@ -305,4 +262,4 @@ class OpenContact extends React.Component {
   }
 }
 
-export default OpenContact;
+export default EditContact;

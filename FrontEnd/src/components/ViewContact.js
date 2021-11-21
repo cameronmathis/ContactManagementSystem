@@ -18,18 +18,18 @@ import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/ViewContact.css";
 
-class OpenContact extends React.Component {
+class ViewContact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDeleteContactModalShown: false,
+      didFetchSuccessfully: false,
       contactId: this.props.contactId,
       firstName: "",
       lastName: "",
       phoneNumber: "",
       emailAddress: "",
       isSnackbarOpen: true,
-      didFetchSuccessfully: false,
+      isDeleteContactModalShown: false,
     };
     this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }
@@ -56,12 +56,12 @@ class OpenContact extends React.Component {
     GetContactById(props.contactId)
       .then((contact) => {
         this.setState({
+          didFetchSuccessfully: true,
           contactId: contact.id,
           firstName: contact.firstName,
           lastName: contact.lastName,
           phoneNumber: contact.phoneNumber,
           emailAddress: contact.emailAddress,
-          didFetchSuccessfully: true,
         });
       })
       .catch((error) => {
@@ -77,6 +77,11 @@ class OpenContact extends React.Component {
 
   setDeleteContactModalShown = (bool) => {
     this.setState({ isDeleteContactModalShown: bool });
+  };
+
+  setIsEditing = () => {
+    this.props.setIsViewing(false);
+    this.props.setIsEditing(true);
   };
 
   handleCloseSnackbar() {
@@ -127,13 +132,14 @@ class OpenContact extends React.Component {
                       this.state.isDeleteContactModalShown
                     }
                     setDeleteContactModalShown={this.setDeleteContactModalShown}
+                    setIsViewing={this.props.setIsViewing}
                   />
                 </div>
                 <div className="editContactButton openedContactView-button">
                   <Button
                     variant="contained"
                     className="editContact-button"
-                    onClick={() => this.props.setIsEditing(true)}
+                    onClick={this.setIsEditing}
                   >
                     <div className="editContactButton-text">Edit</div>
                   </Button>
@@ -162,4 +168,4 @@ class OpenContact extends React.Component {
   }
 }
 
-export default OpenContact;
+export default ViewContact;

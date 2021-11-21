@@ -12,22 +12,20 @@ class Body extends React.Component {
     };
   }
 
-  openContact = (contactId) => {
+  setOpenContact = (contactId) => {
     this.setState({ openedContactId: contactId });
   };
 
   render() {
-    const { openedContactId } = this.state;
-    const contactId = openedContactId;
-
     return (
       <body className="body">
         <ContactList
-          openContact={this.openContact}
+          contactsList={this.props.contactsList}
+          setOpenContact={this.setOpenContact}
           openedContactId={this.state.openedContactId}
         />
         {!!this.state.openedContactId ? (
-          <OpenedContact contactId={contactId} />
+          <OpenedContact contactId={this.state.openedContactId} />
         ) : null}
       </body>
     );

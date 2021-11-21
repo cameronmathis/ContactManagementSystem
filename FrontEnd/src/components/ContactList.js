@@ -1,6 +1,4 @@
 import React from "react";
-// import services
-import { GetAllContacts } from "../services/RestService";
 // import constants
 import {
   snackbarPosition,
@@ -27,23 +25,11 @@ class ContactList extends React.Component {
   }
 
   componentDidMount() {
-    GetAllContacts()
-      .then((contacts) => {
-        const sortedContacts = contacts.sort((a, b) =>
-          a.lastName > b.lastName
-            ? 1
-            : a.lastName === b.lastName
-            ? a.firstName > b.firstName
-              ? 1
-              : -1
-            : -1
-        );
-        this.setState({ contacts: sortedContacts });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({ isSnackbarOpen: true });
-      });
+    this.setState({ contacts: this.props.contactsList });
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ contacts: props.contactsList });
   }
 
   handleCloseSnackbar() {
@@ -57,7 +43,7 @@ class ContactList extends React.Component {
           {this.state.contacts.map((contact) => (
             <li key={contact.id}>
               <ContactListItem
-                openContact={this.props.openContact}
+                setOpenContact={this.props.setOpenContact}
                 openedContactId={this.props.openedContactId}
                 contactId={contact.id}
                 firstName={contact.firstName}

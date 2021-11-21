@@ -56,7 +56,7 @@ const CreateContactModal = ({
   setCreateContactModalShown,
 }) => {
   const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
+  const [modalStyle] = useState(getModalStyle);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -91,7 +91,6 @@ const CreateContactModal = ({
           setDidCreateSuccessfully(true);
           setSnackbarOpen(true);
           setCreateContactModalShown(false);
-          window.location.reload();
         })
         .catch((error) => {
           console.log(error);

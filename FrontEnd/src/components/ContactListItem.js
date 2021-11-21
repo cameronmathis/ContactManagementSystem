@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./css/ContactListItem.css";
 
 const ContactListItem = ({
-  openContact,
+  setOpenContact,
   openedContactId,
   contactId,
   firstName,
@@ -24,14 +24,17 @@ const ContactListItem = ({
       {isContactSelected ? (
         <div
           className="contactListItem-selected"
-          onClick={() => openContact(contactId)}
+          onClick={() => setOpenContact(contactId)}
         >
           <div className="contactListItem-text">
             {lastName}, {firstName}
           </div>
         </div>
       ) : (
-        <div className="contactListItem" onClick={() => openContact(contactId)}>
+        <div
+          className="contactListItem"
+          onClick={() => setOpenContact(contactId)}
+        >
           <div className="contactListItem-text">
             {lastName}, {firstName}
           </div>

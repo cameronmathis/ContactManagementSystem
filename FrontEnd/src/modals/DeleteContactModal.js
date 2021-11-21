@@ -50,9 +50,10 @@ const DeleteContactModal = ({
   contactId,
   isDeleteContactModalShown,
   setDeleteContactModalShown,
+  setIsViewing,
 }) => {
   const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
+  const [modalStyle] = useState(getModalStyle);
 
   const [didDeleteSuccessfully, setDidDeleteSuccessfully] = useState();
   const [isSnackbarOpen, setSnackbarOpen] = useState(false);
@@ -63,7 +64,7 @@ const DeleteContactModal = ({
         setDidDeleteSuccessfully(true);
         setSnackbarOpen(true);
         setDeleteContactModalShown(false);
-        window.location.reload();
+        // setIsViewing(false);
       })
       .catch((error) => {
         console.log(error);
