@@ -30,7 +30,7 @@ class ContactList extends React.Component {
           {this.state.contacts.map((contact) => (
             <li key={contact.id}>
               <ContactListItem
-                setOpenContact={this.props.setOpenContact}
+                setOpenContactId={this.props.setOpenContactId}
                 setIsViewing={this.props.setIsViewing}
                 openedContactId={this.props.openedContactId}
                 contactId={contact.id}
