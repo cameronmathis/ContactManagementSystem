@@ -1,21 +1,4 @@
-.contactListItem {
-  padding: 10px;
-  margin: 5px 5px;
-  width: 15vw;
-  height: min-content;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  border-radius: 10px;
-  border: 1px solid var(--clr-medium);
-  overflow: hidden;
-}
-
-.contactListItem:hover {
-  cursor: pointer;
-  background-color: var(--clr-medium);
-}
-
+.contactListItem,
 .contactListItem-selected {
   padding: 10px;
   margin: 5px 5px;
@@ -26,6 +9,15 @@
   justify-content: left;
   border-radius: 10px;
   overflow: hidden;
+  border: 1px solid var(--clr-medium);
+}
+
+.contactListItem:hover {
+  cursor: pointer;
+  background-color: var(--clr-medium);
+}
+
+.contactListItem-selected {
   background-color: var(--clr-accent);
 }
 
