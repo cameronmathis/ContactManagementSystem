@@ -89,28 +89,31 @@ class OpenedContact extends React.Component {
           autoHideDuration={snackbarDuration}
           onClose={this.handleCloseSnackbar}
         >
-          {this.state.didDeleteSuccessfully === "" ? null : (
+          {this.state.didEditSuccessfully === "" ? (
             <div>
-              {this.state.didEditSuccessfully ? (
-                <Alert
-                  onClose={this.handleCloseSnackbar}
-                  severity="success"
-                  sx={{ width: "100%" }}
-                >
-                  {deleteSuccessMessage}
-                </Alert>
-              ) : (
-                <Alert
-                  onClose={this.handleCloseSnackbar}
-                  severity="error"
-                  sx={{ width: "100%" }}
-                >
-                  {deleteFailMessage}
-                </Alert>
+              {this.state.didDeleteSuccessfully === "" ? null : (
+                <div>
+                  {this.state.didDeleteSuccessfully ? (
+                    <Alert
+                      onClose={this.handleCloseSnackbar}
+                      severity="success"
+                      sx={{ width: "100%" }}
+                    >
+                      {deleteSuccessMessage}
+                    </Alert>
+                  ) : (
+                    <Alert
+                      onClose={this.handleCloseSnackbar}
+                      severity="error"
+                      sx={{ width: "100%" }}
+                    >
+                      {deleteFailMessage}
+                    </Alert>
+                  )}
+                </div>
               )}
             </div>
-          )}
-          {this.state.didEditSuccessfully === "" ? null : (
+          ) : (
             <div>
               {this.state.didEditSuccessfully ? (
                 <Alert

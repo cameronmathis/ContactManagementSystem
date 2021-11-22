@@ -50,7 +50,7 @@ const DeleteContactModal = ({
     DeleteContactById(contactId)
       .then(() => {
         setDidDeleteSuccessfully(true);
-        // setIsSnackbarOpen(true);
+        setIsSnackbarOpen(true);
         setIsViewing(false);
         setIsDeleteContactModalShown(false);
       })

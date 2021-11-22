@@ -79,7 +79,7 @@ class EditContact extends React.Component {
       )
         .then(() => {
           this.props.setDidEditSuccessfully(true);
-          // this.props.setIsSnackbarOpen(true);
+          this.props.setIsSnackbarOpen(true);
           this.props.setIsEditing(false);
           this.props.setIsViewing(true);
         })
