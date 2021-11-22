@@ -1,16 +1,6 @@
 import React from "react";
-// import constants
-import {
-  snackbarPosition,
-  snackbarDuration,
-  fetchContactsFailMessage,
-} from "../constants/Snackbar";
 // import components
 import ContactListItem from "./ContactListItem";
-// import snackbar
-import Snackbar from "@material-ui/core/Snackbar";
-// import alert
-import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/ContactList.css";
 
@@ -19,9 +9,7 @@ class ContactList extends React.Component {
     super(props);
     this.state = {
       contacts: [],
-      isSnackbarOpen: false,
     };
-    this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }
 
   componentDidMount() {
@@ -33,10 +21,6 @@ class ContactList extends React.Component {
       return { contacts: nextProps.contactsList };
     }
     return null;
-  }
-
-  handleCloseSnackbar() {
-    this.setState({ isSnackbarOpen: false });
   }
 
   render() {
@@ -56,20 +40,6 @@ class ContactList extends React.Component {
             </li>
           ))}
         </ul>
-        <Snackbar
-          anchorOrigin={snackbarPosition}
-          open={this.state.isSnackbarOpen}
-          autoHideDuration={snackbarDuration}
-          onClose={this.handleCloseSnackbar}
-        >
-          <Alert
-            onClose={this.handleCloseSnackbar}
-            severity="error"
-            sx={{ width: "100%" }}
-          >
-            {fetchContactsFailMessage}
-          </Alert>
-        </Snackbar>
       </div>
     );
   }
