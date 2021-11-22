@@ -83,58 +83,58 @@ class OpenedContact extends React.Component {
             contactId={this.state.contactId}
           />
         ) : null}
-        <Snackbar
-          anchorOrigin={snackbarPosition}
-          open={this.state.isSnackbarOpen}
-          autoHideDuration={snackbarDuration}
-          onClose={this.handleCloseSnackbar}
-        >
-          {this.state.didEditSuccessfully === "" ? (
-            <div>
-              {this.state.didDeleteSuccessfully === "" ? null : (
-                <div>
-                  {this.state.didDeleteSuccessfully ? (
-                    <Alert
-                      onClose={this.handleCloseSnackbar}
-                      severity="success"
-                      sx={{ width: "100%" }}
-                    >
-                      {deleteSuccessMessage}
-                    </Alert>
-                  ) : (
-                    <Alert
-                      onClose={this.handleCloseSnackbar}
-                      severity="error"
-                      sx={{ width: "100%" }}
-                    >
-                      {deleteFailMessage}
-                    </Alert>
-                  )}
-                </div>
-              )}
-            </div>
-          ) : (
-            <div>
-              {this.state.didEditSuccessfully ? (
-                <Alert
-                  onClose={this.handleCloseSnackbar}
-                  severity="success"
-                  sx={{ width: "100%" }}
-                >
-                  {editSuccessMessage}
-                </Alert>
-              ) : (
-                <Alert
-                  onClose={this.handleCloseSnackbar}
-                  severity="error"
-                  sx={{ width: "100%" }}
-                >
-                  {editFailMessage}
-                </Alert>
-              )}
-            </div>
-          )}
-        </Snackbar>
+        {this.state.didDeleteSuccessfully === "" ? null : (
+          <Snackbar
+            anchorOrigin={snackbarPosition}
+            open={this.state.isSnackbarOpen}
+            autoHideDuration={snackbarDuration}
+            onClose={this.handleCloseSnackbar}
+          >
+            {this.state.didDeleteSuccessfully ? (
+              <Alert
+                onClose={this.handleCloseSnackbar}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                {deleteSuccessMessage}
+              </Alert>
+            ) : (
+              <Alert
+                onClose={this.handleCloseSnackbar}
+                severity="error"
+                sx={{ width: "100%" }}
+              >
+                {deleteFailMessage}
+              </Alert>
+            )}
+          </Snackbar>
+        )}
+        {this.state.didEditSuccessfully === "" ? null : (
+          <Snackbar
+            anchorOrigin={snackbarPosition}
+            open={this.state.isSnackbarOpen}
+            autoHideDuration={snackbarDuration}
+            onClose={this.handleCloseSnackbar}
+          >
+            {this.state.didEditSuccessfully ? (
+              <Alert
+                onClose={this.handleCloseSnackbar}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                {editSuccessMessage}
+              </Alert>
+            ) : (
+              <Alert
+                onClose={this.handleCloseSnackbar}
+                severity="error"
+                sx={{ width: "100%" }}
+              >
+                {editFailMessage}
+              </Alert>
+            )}
+          </Snackbar>
+        )}
       </div>
     );
   }
