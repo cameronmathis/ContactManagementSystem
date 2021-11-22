@@ -55,9 +55,7 @@ class ViewContact extends React.Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.contactId !== nextProps.contactId) {
-      return {
-        contactId: nextProps.contactId,
-      };
+      return { contactId: nextProps.contactId };
     }
     return null;
   }
