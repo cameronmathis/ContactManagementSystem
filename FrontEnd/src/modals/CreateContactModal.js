@@ -6,12 +6,23 @@ import {
   getIsPhoneNumberValid,
   getIsEmailAddressValid,
 } from "../services/ValidationService";
+// import constants
+import {
+  snackbarPosition,
+  snackbarDuration,
+  createSuccessMessage,
+  createFailMessage,
+} from "../constants/Snackbar";
 // import styles
 import { makeStyles } from "@material-ui/core/styles";
 // import icons
 import Button from "@material-ui/core/Button";
 // import modals
 import Modal from "@material-ui/core/Modal";
+// import snackbar
+import Snackbar from "@material-ui/core/Snackbar";
+// import alert
+import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/CreateContactModal.css";
 
@@ -45,7 +56,7 @@ const CreateContactModal = ({
   setCreateContactModalShown,
 }) => {
   const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
+  const [modalStyle] = useState(getModalStyle);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -56,6 +67,9 @@ const CreateContactModal = ({
   const [isLastNameValid, setLastNameValid] = useState(true);
   const [isPhoneNumberValid, setPhoneNumberValid] = useState(true);
   const [isEmailAddressValid, setEmailAddressValid] = useState(true);
+
+  const [didCreateSuccessfully, setDidCreateSuccessfully] = useState();
+  const [isSnackbarOpen, setSnackbarOpen] = useState(false);
 
   const cancelNewContact = () => {
     setCreateContactModalShown(false);
@@ -72,9 +86,17 @@ const CreateContactModal = ({
 
   const submitNewContact = () => {
     if (areValuesValid()) {
-      CreateContact(firstName, lastName, phoneNumber, emailAddress);
-      setCreateContactModalShown(false);
-      window.location.reload();
+      CreateContact(firstName, lastName, phoneNumber, emailAddress)
+        .then(() => {
+          setDidCreateSuccessfully(true);
+          setSnackbarOpen(true);
+          setCreateContactModalShown(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setDidCreateSuccessfully(false);
+          setSnackbarOpen(true);
+        });
     }
   };
 
@@ -202,6 +224,30 @@ const CreateContactModal = ({
           </div>
         </div>
       </Modal>
+      <Snackbar
+        anchorOrigin={snackbarPosition}
+        open={isSnackbarOpen}
+        autoHideDuration={snackbarDuration}
+        onClose={() => setSnackbarOpen(false)}
+      >
+        {didCreateSuccessfully ? (
+          <Alert
+            onClose={() => setSnackbarOpen(false)}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            {createSuccessMessage}
+          </Alert>
+        ) : (
+          <Alert
+            onClose={() => setSnackbarOpen(false)}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            {createFailMessage}
+          </Alert>
+        )}
+      </Snackbar>
     </div>
   );
 };

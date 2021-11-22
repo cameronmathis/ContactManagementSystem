@@ -9,25 +9,33 @@ class Body extends React.Component {
     super(props);
     this.state = {
       openedContactId: "",
+      isViewing: true,
     };
   }
 
-  openContact = (contactId) => {
+  setOpenContact = (contactId) => {
     this.setState({ openedContactId: contactId });
   };
 
-  render() {
-    const { openedContactId } = this.state;
-    const contactId = openedContactId;
+  setIsViewing = (bool) => {
+    this.setState({ isViewing: bool });
+  };
 
+  render() {
     return (
       <body className="body">
         <ContactList
-          openContact={this.openContact}
+          setOpenContact={this.setOpenContact}
+          setIsViewing={this.setIsViewing}
+          contactsList={this.props.contactsList}
           openedContactId={this.state.openedContactId}
         />
         {!!this.state.openedContactId ? (
-          <OpenedContact contactId={contactId} />
+          <OpenedContact
+            setIsViewing={this.setIsViewing}
+            isViewing={this.state.isViewing}
+            contactId={this.state.openedContactId}
+          />
         ) : null}
       </body>
     );

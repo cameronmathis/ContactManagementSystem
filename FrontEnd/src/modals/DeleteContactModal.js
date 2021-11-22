@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import services
 import { DeleteContactById } from "../services/RestService";
 // import styles
@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 // import modals
 import Modal from "@material-ui/core/Modal";
 // import css
-import "./css/ConfirmDeleteContactModal.css";
+import "./css/DeleteContactModal.css";
 
 function getModalStyle() {
   const top = 50;
@@ -35,32 +35,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ConfirmDeleteContactModal = ({
+const DeleteContactModal = ({
+  setDidDeleteSuccessfully,
+  setIsSnackbarOpen,
+  setIsViewing,
+  setIsDeleteContactModalShown,
   contactId,
-  isConfirmDeleteContactModalShown,
-  hideConfirmDeleteContactModal,
+  isDeleteContactModalShown,
 }) => {
   const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
-
-  const cancelDeleteContact = () => {
-    hideConfirmDeleteContactModal();
-  };
+  const [modalStyle] = useState(getModalStyle);
 
   const submitDeleteContact = () => {
-    DeleteContactById(contactId);
-    hideConfirmDeleteContactModal();
-    window.location.reload();
+    DeleteContactById(contactId)
+      .then(() => {
+        setDidDeleteSuccessfully(true);
+        setIsSnackbarOpen(true);
+        setIsViewing(false);
+        setIsDeleteContactModalShown(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setDidDeleteSuccessfully(false);
+        setIsSnackbarOpen(true);
+      });
   };
 
   return (
     <div>
-      <Modal
-        className="confirmDeleteContactModal"
-        open={isConfirmDeleteContactModalShown}
-      >
+      <Modal className="deleteContactModal" open={isDeleteContactModalShown}>
         <div style={modalStyle} className={classes.paper}>
-          <div className="confirmDeleteContactModal-content">
+          <div className="deleteContactModal-content">
             <header>
               <h2>Delete Contact</h2>
             </header>
@@ -68,17 +73,17 @@ const ConfirmDeleteContactModal = ({
               <p>Are you sure you want to delete this contact?</p>
             </body>
             <footer>
-              <div className="confirmDeleteContactModal-buttons">
-                <div className="cancelDeleteContactButton confirmDeleteContactModal-button">
+              <div className="deleteContactModal-buttons">
+                <div className="cancelDeleteContactButton deleteContactModal-button">
                   <Button
                     variant="contained"
                     className="cancelDeleteContact-button"
-                    onClick={cancelDeleteContact}
+                    onClick={() => setIsDeleteContactModalShown(false)}
                   >
                     <div className="cancelDeleteContactButton-text">Cancel</div>
                   </Button>
                 </div>
-                <div className="submitDeleteContactButton confirmDeleteContactModal-button">
+                <div className="submitDeleteContactButton deleteContactModal-button">
                   <Button
                     variant="contained"
                     className="submitDeleteContact-button"
@@ -96,4 +101,4 @@ const ConfirmDeleteContactModal = ({
   );
 };
 
-export default ConfirmDeleteContactModal;
+export default DeleteContactModal;
