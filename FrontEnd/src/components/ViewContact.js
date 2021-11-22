@@ -7,7 +7,7 @@ import {
   snackbarDuration,
   fetchContactFailMessage,
 } from "../constants/Snackbar";
-// import icons
+// import button
 import Button from "@material-ui/core/Button";
 // import modals
 import DeleteContactModal from "../modals/DeleteContactModal";

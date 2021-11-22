@@ -12,7 +12,7 @@ import {
   snackbarDuration,
   fetchContactFailMessage,
 } from "../constants/Snackbar";
-// import icons
+// import button
 import Button from "@material-ui/core/Button";
 // import snackbar
 import Snackbar from "@material-ui/core/Snackbar";
