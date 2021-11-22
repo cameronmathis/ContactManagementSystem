@@ -9,6 +9,7 @@ class Body extends React.Component {
     super(props);
     this.state = {
       openedContactId: "",
+      isViewing: true,
     };
   }
 
@@ -16,16 +17,25 @@ class Body extends React.Component {
     this.setState({ openedContactId: contactId });
   };
 
+  setIsViewing = (bool) => {
+    this.setState({ isViewing: bool });
+  };
+
   render() {
     return (
       <body className="body">
         <ContactList
-          contactsList={this.props.contactsList}
           setOpenContact={this.setOpenContact}
+          setIsViewing={this.setIsViewing}
+          contactsList={this.props.contactsList}
           openedContactId={this.state.openedContactId}
         />
         {!!this.state.openedContactId ? (
-          <OpenedContact contactId={this.state.openedContactId} />
+          <OpenedContact
+            setIsViewing={this.setIsViewing}
+            isViewing={this.state.isViewing}
+            contactId={this.state.openedContactId}
+          />
         ) : null}
       </body>
     );

@@ -23,7 +23,7 @@ class ViewContact extends React.Component {
     super(props);
     this.state = {
       didFetchSuccessfully: false,
-      contactId: this.props.contactId,
+      contactId: "",
       firstName: "",
       lastName: "",
       phoneNumber: "",
@@ -38,6 +38,7 @@ class ViewContact extends React.Component {
     GetContactById(this.props.contactId)
       .then((contact) => {
         this.setState({
+          contactId: contact.id,
           firstName: contact.firstName,
           lastName: contact.lastName,
           phoneNumber: contact.phoneNumber,
@@ -52,30 +53,41 @@ class ViewContact extends React.Component {
       });
   }
 
-  componentWillReceiveProps(props) {
-    GetContactById(props.contactId)
-      .then((contact) => {
-        this.setState({
-          didFetchSuccessfully: true,
-          contactId: contact.id,
-          firstName: contact.firstName,
-          lastName: contact.lastName,
-          phoneNumber: contact.phoneNumber,
-          emailAddress: contact.emailAddress,
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.contactId !== nextProps.contactId) {
+      return {
+        contactId: nextProps.contactId,
+      };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contactId !== this.state.contactId) {
+      GetContactById(this.state.contactId)
+        .then((contact) => {
+          this.setState({
+            didFetchSuccessfully: true,
+            contactId: contact.id,
+            firstName: contact.firstName,
+            lastName: contact.lastName,
+            phoneNumber: contact.phoneNumber,
+            emailAddress: contact.emailAddress,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          this.setState({ didFetchSuccessfully: false });
+          this.setState({ isSnackbarOpen: true });
         });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({ didFetchSuccessfully: false });
-        this.setState({ isSnackbarOpen: true });
-      });
+    }
   }
 
   showDeleteContactModal = () => {
     this.setState({ isDeleteContactModalShown: true });
   };
 
-  setDeleteContactModalShown = (bool) => {
+  setIsDeleteContactModalShown = (bool) => {
     this.setState({ isDeleteContactModalShown: bool });
   };
 
@@ -127,12 +139,18 @@ class ViewContact extends React.Component {
                     <div className="cancelNewContactButton-text">Delete</div>
                   </Button>
                   <DeleteContactModal
+                    setDidDeleteSuccessfully={
+                      this.props.setDidDeleteSuccessfully
+                    }
+                    setIsSnackbarOpen={this.props.setIsSnackbarOpen}
+                    setIsDeleteContactModalShown={
+                      this.setIsDeleteContactModalShown
+                    }
+                    setIsViewing={this.props.setIsViewing}
                     contactId={this.state.contactId}
                     isDeleteContactModalShown={
                       this.state.isDeleteContactModalShown
                     }
-                    setDeleteContactModalShown={this.setDeleteContactModalShown}
-                    setIsViewing={this.props.setIsViewing}
                   />
                 </div>
                 <div className="editContactButton openedContactView-button">

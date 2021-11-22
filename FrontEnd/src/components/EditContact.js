@@ -78,10 +78,10 @@ class EditContact extends React.Component {
         this.state.emailAddress
       )
         .then(() => {
+          this.props.setDidEditSuccessfully(true);
+          // this.props.setIsSnackbarOpen(true);
           this.props.setIsEditing(false);
           this.props.setIsViewing(true);
-          this.props.setDidEditSuccessfully(true);
-          this.props.setIsSnackbarOpen(true);
         })
         .catch((error) => {
           console.log(error);

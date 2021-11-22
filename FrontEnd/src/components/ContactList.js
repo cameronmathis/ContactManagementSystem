@@ -28,8 +28,11 @@ class ContactList extends React.Component {
     this.setState({ contacts: this.props.contactsList });
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({ contacts: props.contactsList });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.contactsList !== nextProps.contactsList) {
+      return { contacts: nextProps.contactsList };
+    }
+    return null;
   }
 
   handleCloseSnackbar() {
@@ -44,6 +47,7 @@ class ContactList extends React.Component {
             <li key={contact.id}>
               <ContactListItem
                 setOpenContact={this.props.setOpenContact}
+                setIsViewing={this.props.setIsViewing}
                 openedContactId={this.props.openedContactId}
                 contactId={contact.id}
                 firstName={contact.firstName}

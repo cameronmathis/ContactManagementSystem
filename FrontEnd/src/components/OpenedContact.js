@@ -3,6 +3,8 @@ import React from "react";
 import {
   snackbarPosition,
   snackbarDuration,
+  deleteSuccessMessage,
+  deleteFailMessage,
   editSuccessMessage,
   editFailMessage,
 } from "../constants/Snackbar";
@@ -21,21 +23,20 @@ class OpenedContact extends React.Component {
     super(props);
     this.state = {
       contactId: props.contactId,
-      isViewing: true,
       isEditing: false,
       isSnackbarOpen: false,
+      didDeleteSuccessfully: "",
       didEditSuccessfully: "",
     };
     this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({ contactId: props.contactId });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.contactId !== nextProps.contactId) {
+      return { contactId: nextProps.contactId };
+    }
+    return null;
   }
-
-  setIsViewing = (bool) => {
-    this.setState({ isViewing: bool });
-  };
 
   setIsEditing = (bool) => {
     this.setState({ isEditing: bool });
@@ -45,33 +46,41 @@ class OpenedContact extends React.Component {
     this.setState({ isSnackbarOpen: bool });
   };
 
+  setDidDeleteSuccessfully = (bool) => {
+    this.setState({ didDeleteSuccessfully: bool });
+  };
+
   setDidEditSuccessfully = (bool) => {
     this.setState({ didEditSuccessfully: bool });
   };
 
   handleCloseSnackbar() {
-    this.setState({ isSnackbarOpen: false });
+    this.setState({
+      isSnackbarOpen: false,
+      didDeleteSuccessfully: "",
+      didEditSuccessfully: "",
+    });
   }
 
   render() {
     return (
       <div className="openedContact-container">
-        {this.state.isViewing ? (
+        {this.props.isViewing ? (
           <ViewContact
-            contactId={this.state.contactId}
-            setIsViewing={this.setIsViewing}
+            setIsViewing={this.props.setIsViewing}
             setIsEditing={this.setIsEditing}
             setIsSnackbarOpen={this.setIsSnackbarOpen}
-            setDidEditSuccessfully={this.setDidDeleteSuccessfully}
+            setDidDeleteSuccessfully={this.setDidDeleteSuccessfully}
+            contactId={this.state.contactId}
           />
         ) : null}
         {this.state.isEditing ? (
           <EditContact
-            contactId={this.state.contactId}
-            setIsViewing={this.setIsViewing}
+            setIsViewing={this.props.setIsViewing}
             setIsEditing={this.setIsEditing}
             setIsSnackbarOpen={this.setIsSnackbarOpen}
             setDidEditSuccessfully={this.setDidEditSuccessfully}
+            contactId={this.state.contactId}
           />
         ) : null}
         <Snackbar
@@ -80,22 +89,47 @@ class OpenedContact extends React.Component {
           autoHideDuration={snackbarDuration}
           onClose={this.handleCloseSnackbar}
         >
-          {this.state.didEditSuccessfully ? (
-            <Alert
-              onClose={this.handleCloseSnackbar}
-              severity="success"
-              sx={{ width: "100%" }}
-            >
-              {editSuccessMessage}
-            </Alert>
-          ) : (
-            <Alert
-              onClose={this.handleCloseSnackbar}
-              severity="error"
-              sx={{ width: "100%" }}
-            >
-              {editFailMessage}
-            </Alert>
+          {this.state.didDeleteSuccessfully === "" ? null : (
+            <div>
+              {this.state.didEditSuccessfully ? (
+                <Alert
+                  onClose={this.handleCloseSnackbar}
+                  severity="success"
+                  sx={{ width: "100%" }}
+                >
+                  {deleteSuccessMessage}
+                </Alert>
+              ) : (
+                <Alert
+                  onClose={this.handleCloseSnackbar}
+                  severity="error"
+                  sx={{ width: "100%" }}
+                >
+                  {deleteFailMessage}
+                </Alert>
+              )}
+            </div>
+          )}
+          {this.state.didEditSuccessfully === "" ? null : (
+            <div>
+              {this.state.didEditSuccessfully ? (
+                <Alert
+                  onClose={this.handleCloseSnackbar}
+                  severity="success"
+                  sx={{ width: "100%" }}
+                >
+                  {editSuccessMessage}
+                </Alert>
+              ) : (
+                <Alert
+                  onClose={this.handleCloseSnackbar}
+                  severity="error"
+                  sx={{ width: "100%" }}
+                >
+                  {editFailMessage}
+                </Alert>
+              )}
+            </div>
           )}
         </Snackbar>
       </div>
