@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./css/ContactListItem.css";
 
 const ContactListItem = ({
-  setOpenContact,
+  setOpenContactId,
   setIsViewing,
   openedContactId,
   contactId,
@@ -21,7 +21,7 @@ const ContactListItem = ({
   }, [openedContactId, contactId, isContactSelected]);
 
   const openContact = () => {
-    setOpenContact(contactId);
+    setOpenContactId(contactId);
     setIsViewing(true);
   };
 
