@@ -63,13 +63,13 @@ const CreateContactModal = ({
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
 
-  const [isFirstNameValid, setFirstNameValid] = useState(true);
-  const [isLastNameValid, setLastNameValid] = useState(true);
-  const [isPhoneNumberValid, setPhoneNumberValid] = useState(true);
-  const [isEmailAddressValid, setEmailAddressValid] = useState(true);
+  const [isFirstNameValid, setIsFirstNameValid] = useState(true);
+  const [isLastNameValid, setIsLastNameValid] = useState(true);
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(true);
+  const [isEmailAddressValid, setIsEmailAddressValid] = useState(true);
 
   const [didCreateSuccessfully, setDidCreateSuccessfully] = useState();
-  const [isSnackbarOpen, setSnackbarOpen] = useState(false);
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
   const cancelNewContact = () => {
     setCreateContactModalShown(false);
@@ -78,10 +78,10 @@ const CreateContactModal = ({
     setLastName("");
     setPhoneNumber("");
     setEmailAddress("");
-    setFirstNameValid(true);
-    setLastNameValid(true);
-    setPhoneNumberValid(true);
-    setEmailAddressValid(true);
+    setIsFirstNameValid(true);
+    setIsLastNameValid(true);
+    setIsPhoneNumberValid(true);
+    setIsEmailAddressValid(true);
   };
 
   const submitNewContact = () => {
@@ -89,13 +89,13 @@ const CreateContactModal = ({
       CreateContact(firstName, lastName, phoneNumber, emailAddress)
         .then(() => {
           setDidCreateSuccessfully(true);
-          setSnackbarOpen(true);
+          setIsSnackbarOpen(true);
           setCreateContactModalShown(false);
         })
         .catch((error) => {
           console.log(error);
           setDidCreateSuccessfully(false);
-          setSnackbarOpen(true);
+          setIsSnackbarOpen(true);
         });
     }
   };
@@ -103,28 +103,28 @@ const CreateContactModal = ({
   const areValuesValid = () => {
     let result = true;
     if (!getIsStringValid(firstName)) {
-      setFirstNameValid(false);
+      setIsFirstNameValid(false);
       result = false;
     } else {
-      setFirstNameValid(true);
+      setIsFirstNameValid(true);
     }
     if (!getIsStringValid(lastName)) {
-      setLastNameValid(false);
+      setIsLastNameValid(false);
       result = false;
     } else {
-      setLastNameValid(true);
+      setIsLastNameValid(true);
     }
     if (!getIsPhoneNumberValid(phoneNumber)) {
-      setPhoneNumberValid(false);
+      setIsPhoneNumberValid(false);
       result = false;
     } else {
-      setPhoneNumberValid(true);
+      setIsPhoneNumberValid(true);
     }
     if (!getIsEmailAddressValid(emailAddress)) {
-      setEmailAddressValid(false);
+      setIsEmailAddressValid(false);
       result = false;
     } else {
-      setEmailAddressValid(true);
+      setIsEmailAddressValid(true);
     }
     return result;
   };
@@ -230,11 +230,11 @@ const CreateContactModal = ({
         anchorOrigin={snackbarPosition}
         open={isSnackbarOpen}
         autoHideDuration={snackbarDuration}
-        onClose={() => setSnackbarOpen(false)}
+        onClose={() => setIsSnackbarOpen(false)}
       >
         {didCreateSuccessfully ? (
           <Alert
-            onClose={() => setSnackbarOpen(false)}
+            onClose={() => setIsSnackbarOpen(false)}
             severity="success"
             sx={{ width: "100%" }}
           >
@@ -242,7 +242,7 @@ const CreateContactModal = ({
           </Alert>
         ) : (
           <Alert
-            onClose={() => setSnackbarOpen(false)}
+            onClose={() => setIsSnackbarOpen(false)}
             severity="error"
             sx={{ width: "100%" }}
           >

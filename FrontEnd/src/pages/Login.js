@@ -17,11 +17,11 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const [isUsernameValid, setUsernameValid] = useState(true);
-  const [isPasswordValid, setPasswordValid] = useState(true);
+  const [isUsernameValid, setIsUsernameValid] = useState(true);
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
 
   const submitLogin = () => {
-    if (areValuesValid()) {
+    if (areValuesValid() && doesAccountExist()) {
       console.log("Username: " + username);
       console.log("Password: " + password);
       navigate("/home");
@@ -31,17 +31,22 @@ function Login() {
   const areValuesValid = () => {
     let result = true;
     if (!getIsStringValid(username)) {
-      setUsernameValid(false);
+      setIsUsernameValid(false);
       result = false;
     } else {
-      setUsernameValid(true);
+      setIsUsernameValid(true);
     }
     if (!getIsStringValid(password)) {
-      setPasswordValid(false);
+      setIsPasswordValid(false);
       result = false;
     } else {
-      setPasswordValid(true);
+      setIsPasswordValid(true);
     }
+    return result;
+  };
+
+  const doesAccountExist = () => {
+    let result = true;
     return result;
   };
 
@@ -65,7 +70,6 @@ function Login() {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
           />
-
           {isPasswordValid ? (
             <label className="passwordInput-label loginInput-label">
               Password
