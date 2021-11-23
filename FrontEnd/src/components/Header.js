@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// import constants
+import { login, home } from "../constants/Pages";
 // import buttons
 import Button from "@material-ui/core/Button";
 // import icons
@@ -8,7 +11,9 @@ import CreateContactModal from "../modals/CreateContactModal";
 // import css
 import "./css/Header.css";
 
-function Header() {
+const Header = ({ page }) => {
+  const navigate = useNavigate();
+
   const [isCreateContactModalShown, setCreateContactModalShown] =
     useState(false);
 
@@ -16,30 +21,47 @@ function Header() {
     setCreateContactModalShown(true);
   }
 
+  function showSignUpPage() {
+    navigate("/signup");
+  }
+
   return (
     <div className="header">
       <div className="headerLeft">
-        <h1>Contacts</h1>
+        <h1>Contact Management System</h1>
       </div>
       <div className="headerRight">
-        <div className="newContactButton">
-          <Button
-            variant="contained"
-            className="newContact-button"
-            onClick={showNewContactModal}
-          >
-            <div className="newContactButton-text">New Contact</div>
-            <div className="newContactButton-spacer"></div>
-            <AddIcon className="newContactButton-icon" fontSize="medium" />
-          </Button>
-          <CreateContactModal
-            isCreateContactModalShown={isCreateContactModalShown}
-            setCreateContactModalShown={setCreateContactModalShown}
-          />
-        </div>
+        {page === login ? (
+          <div className="signUpButton">
+            <Button
+              variant="contained"
+              className="signUp-button"
+              onClick={showSignUpPage}
+            >
+              <div className="signUpButton-text">Sign-Up</div>
+            </Button>
+          </div>
+        ) : null}
+        {page === "home" ? (
+          <div className="newContactButton">
+            <Button
+              variant="contained"
+              className="newContact-button"
+              onClick={showNewContactModal}
+            >
+              <div className="newContactButton-text">New Contact</div>
+              <div className="newContactButton-spacer"></div>
+              <AddIcon className="newContactButton-icon" fontSize="medium" />
+            </Button>
+            <CreateContactModal
+              isCreateContactModalShown={isCreateContactModalShown}
+              setCreateContactModalShown={setCreateContactModalShown}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );
-}
+};
 
 export default Header;

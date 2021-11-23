@@ -189,6 +189,7 @@ const CreateContactModal = ({
                   value={emailAddress}
                   onChange={(e) => setEmailAddress(e.target.value)}
                   placeholder="Email Address"
+                  type="email"
                 />
               ) : (
                 <input
@@ -196,6 +197,7 @@ const CreateContactModal = ({
                   value={emailAddress}
                   onChange={(e) => setEmailAddress(e.target.value)}
                   placeholder="Email Address"
+                  type="email"
                 />
               )}
             </body>

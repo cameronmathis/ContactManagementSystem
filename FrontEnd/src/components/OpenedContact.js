@@ -23,7 +23,6 @@ class OpenedContact extends React.Component {
     super(props);
     this.state = {
       contactId: props.contactId,
-      isEditing: false,
       isSnackbarOpen: false,
       didDeleteSuccessfully: "",
       didEditSuccessfully: "",
@@ -37,10 +36,6 @@ class OpenedContact extends React.Component {
     }
     return null;
   }
-
-  setIsEditing = (bool) => {
-    this.setState({ isEditing: bool });
-  };
 
   setIsSnackbarOpen = (bool) => {
     this.setState({ isSnackbarOpen: bool });
@@ -68,16 +63,16 @@ class OpenedContact extends React.Component {
         {this.props.isViewing ? (
           <ViewContact
             setIsViewing={this.props.setIsViewing}
-            setIsEditing={this.setIsEditing}
+            setIsEditing={this.props.setIsEditing}
             setIsSnackbarOpen={this.setIsSnackbarOpen}
             setDidDeleteSuccessfully={this.setDidDeleteSuccessfully}
             contactId={this.state.contactId}
           />
         ) : null}
-        {this.state.isEditing ? (
+        {this.props.isEditing ? (
           <EditContact
             setIsViewing={this.props.setIsViewing}
-            setIsEditing={this.setIsEditing}
+            setIsEditing={this.props.setIsEditing}
             setIsSnackbarOpen={this.setIsSnackbarOpen}
             setDidEditSuccessfully={this.setDidEditSuccessfully}
             contactId={this.state.contactId}

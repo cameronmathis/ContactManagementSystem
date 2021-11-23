@@ -32,6 +32,7 @@ class ContactList extends React.Component {
               <ContactListItem
                 setOpenContactId={this.props.setOpenContactId}
                 setIsViewing={this.props.setIsViewing}
+                setIsEditing={this.props.setIsEditing}
                 openedContactId={this.props.openedContactId}
                 contactId={contact.id}
                 firstName={contact.firstName}

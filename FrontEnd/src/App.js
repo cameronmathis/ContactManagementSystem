@@ -16,8 +16,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />}></Route>
-          <Route path="/login" component={<Login />}></Route>
+          <Route path="/" element={<Navigate to="/login" />}></Route>
+          <Route path="/login" element={<Login />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="*" element={<PageNotFound />}></Route>
         </Routes>

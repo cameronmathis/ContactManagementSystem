@@ -5,6 +5,7 @@ import "./css/ContactListItem.css";
 const ContactListItem = ({
   setOpenContactId,
   setIsViewing,
+  setIsEditing,
   openedContactId,
   contactId,
   firstName,
@@ -23,6 +24,7 @@ const ContactListItem = ({
   const openContact = () => {
     setOpenContactId(contactId);
     setIsViewing(true);
+    setIsEditing(false);
   };
 
   return (
