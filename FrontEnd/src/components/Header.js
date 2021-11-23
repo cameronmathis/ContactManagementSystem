@@ -42,7 +42,7 @@ const Header = ({ page }) => {
             </Button>
           </div>
         ) : null}
-        {page === "home" ? (
+        {page === home ? (
           <div className="newContactButton">
             <Button
               variant="contained"
