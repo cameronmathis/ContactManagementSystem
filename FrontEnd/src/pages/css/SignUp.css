@@ -1,0 +1,81 @@
+.signUp-container {
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUp-content {
+  padding: 25px;
+  border-radius: 50px;
+  border: 5px solid var(--clr-medium);
+}
+
+.signUp-content > body {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+}
+
+.signUp-input {
+  line-height: 30px;
+  font-size: larger;
+  margin: 5px 0px;
+  padding: 0px 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--clr-dark);
+  background-color: var(--clr-medium);
+}
+
+.signUpInput-label,
+.signUpInput-label-invalid {
+  width: min-content;
+  font-size: larger;
+  margin: 0px 5px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.signUpInput-label {
+  border-bottom: 2px solid var(--clr-accent);
+}
+
+.signUpInput-label-invalid {
+  border-bottom: 2px solid var(--clr-destructive);
+}
+
+.signUp-input-invalid::placeholder {
+  color: var(--clr-destructive-hover);
+}
+
+.signUp-buttons {
+  display: flex;
+  justify-content: right;
+}
+
+.submitSignUpButton-button {
+  margin: 0px 5px 0px 5px;
+}
+
+.submitSignUpButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.submitSignUpButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-constructive);
+}
+
+.submitSignUpButton > .MuiButton-contained:hover {
+  background-color: var(--clr-constructive-hover);
+}
+
+.submitSignUpButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}

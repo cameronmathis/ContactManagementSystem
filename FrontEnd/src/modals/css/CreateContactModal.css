@@ -18,18 +18,7 @@
   margin: 10px 0px;
 }
 
-.createContactModal-input {
-  line-height: 30px;
-  font-size: larger;
-  margin: 5px 0px;
-  padding: 0px 10px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  color: var(--clr-dark);
-  background-color: var(--clr-medium);
-}
-
+.createContactModal-input,
 .createContactModal-input-invalid {
   line-height: 30px;
   font-size: larger;
@@ -38,8 +27,15 @@
   outline: none;
   border: none;
   border-radius: 5px;
-  color: var(--clr-destructive-hover);
   background-color: var(--clr-medium);
+}
+
+.createContactModal-input {
+  color: var(--clr-dark);
+}
+
+.createContactModal-input-invalid {
+  color: var(--clr-destructive-hover);
 }
 
 .createContactModal-input-invalid::placeholder {

@@ -1,29 +1,29 @@
-.confirmDeleteContactModal > .makeStyles-paper-4 {
+.deleteContactModal > .makeStyles-paper-4 {
   outline: 0;
   border-radius: 10px;
   background-color: var(--clr-light);
 }
 
-.confirmDeleteContactModal-content > header {
+.deleteContactModal-content > header {
   border-bottom: 2px solid var(--clr-medium);
 }
 
-.confirmDeleteContactModal-content > header > h2 {
+.deleteContactModal-content > header > h2 {
   margin: 5px;
 }
 
-.confirmDeleteContactModal-content > body {
+.deleteContactModal-content > body {
   display: flex;
   flex-direction: column;
   margin: 10px 5px;
 }
 
-.confirmDeleteContactModal-buttons {
+.deleteContactModal-buttons {
   display: flex;
   justify-content: right;
 }
 
-.confirmDeleteContactModal-button {
+.deleteContactModal-button {
   margin: 0px 5px 0px 5px;
 }
 

@@ -1,0 +1,23 @@
+.home {
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  position: fixed;
+  top: 6vh; /* Header height */
+  width: 90vw;
+  min-width: 370px;
+  height: 100%;
+  margin-top: 4vh;
+  display: flex;
+  -webkit-box-align: center;
+  justify-content: space-between;
+}

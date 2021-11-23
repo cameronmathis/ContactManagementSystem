@@ -6,12 +6,23 @@ import {
   getIsPhoneNumberValid,
   getIsEmailAddressValid,
 } from "../services/ValidationService";
+// import constants
+import {
+  snackbarPosition,
+  snackbarDuration,
+  createSuccessMessage,
+  createFailMessage,
+} from "../constants/Snackbar";
 // import styles
 import { makeStyles } from "@material-ui/core/styles";
-// import icons
+// import button
 import Button from "@material-ui/core/Button";
 // import modals
 import Modal from "@material-ui/core/Modal";
+// import snackbar
+import Snackbar from "@material-ui/core/Snackbar";
+// import alert
+import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/CreateContactModal.css";
 
@@ -45,17 +56,20 @@ const CreateContactModal = ({
   setCreateContactModalShown,
 }) => {
   const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
+  const [modalStyle] = useState(getModalStyle);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
 
-  const [isFirstNameValid, setFirstNameValid] = useState(true);
-  const [isLastNameValid, setLastNameValid] = useState(true);
-  const [isPhoneNumberValid, setPhoneNumberValid] = useState(true);
-  const [isEmailAddressValid, setEmailAddressValid] = useState(true);
+  const [isFirstNameValid, setIsFirstNameValid] = useState(true);
+  const [isLastNameValid, setIsLastNameValid] = useState(true);
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(true);
+  const [isEmailAddressValid, setIsEmailAddressValid] = useState(true);
+
+  const [didCreateSuccessfully, setDidCreateSuccessfully] = useState();
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
   const cancelNewContact = () => {
     setCreateContactModalShown(false);
@@ -64,45 +78,53 @@ const CreateContactModal = ({
     setLastName("");
     setPhoneNumber("");
     setEmailAddress("");
-    setFirstNameValid(true);
-    setLastNameValid(true);
-    setPhoneNumberValid(true);
-    setEmailAddressValid(true);
+    setIsFirstNameValid(true);
+    setIsLastNameValid(true);
+    setIsPhoneNumberValid(true);
+    setIsEmailAddressValid(true);
   };
 
   const submitNewContact = () => {
     if (areValuesValid()) {
-      CreateContact(firstName, lastName, phoneNumber, emailAddress);
-      setCreateContactModalShown(false);
-      window.location.reload();
+      CreateContact(firstName, lastName, phoneNumber, emailAddress)
+        .then(() => {
+          setDidCreateSuccessfully(true);
+          setIsSnackbarOpen(true);
+          setCreateContactModalShown(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setDidCreateSuccessfully(false);
+          setIsSnackbarOpen(true);
+        });
     }
   };
 
   const areValuesValid = () => {
     let result = true;
     if (!getIsStringValid(firstName)) {
-      setFirstNameValid(false);
+      setIsFirstNameValid(false);
       result = false;
     } else {
-      setFirstNameValid(true);
+      setIsFirstNameValid(true);
     }
     if (!getIsStringValid(lastName)) {
-      setLastNameValid(false);
+      setIsLastNameValid(false);
       result = false;
     } else {
-      setLastNameValid(true);
+      setIsLastNameValid(true);
     }
     if (!getIsPhoneNumberValid(phoneNumber)) {
-      setPhoneNumberValid(false);
+      setIsPhoneNumberValid(false);
       result = false;
     } else {
-      setPhoneNumberValid(true);
+      setIsPhoneNumberValid(true);
     }
     if (!getIsEmailAddressValid(emailAddress)) {
-      setEmailAddressValid(false);
+      setIsEmailAddressValid(false);
       result = false;
     } else {
-      setEmailAddressValid(true);
+      setIsEmailAddressValid(true);
     }
     return result;
   };
@@ -167,6 +189,7 @@ const CreateContactModal = ({
                   value={emailAddress}
                   onChange={(e) => setEmailAddress(e.target.value)}
                   placeholder="Email Address"
+                  type="email"
                 />
               ) : (
                 <input
@@ -174,6 +197,7 @@ const CreateContactModal = ({
                   value={emailAddress}
                   onChange={(e) => setEmailAddress(e.target.value)}
                   placeholder="Email Address"
+                  type="email"
                 />
               )}
             </body>
@@ -202,6 +226,30 @@ const CreateContactModal = ({
           </div>
         </div>
       </Modal>
+      <Snackbar
+        anchorOrigin={snackbarPosition}
+        open={isSnackbarOpen}
+        autoHideDuration={snackbarDuration}
+        onClose={() => setIsSnackbarOpen(false)}
+      >
+        {didCreateSuccessfully ? (
+          <Alert
+            onClose={() => setIsSnackbarOpen(false)}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            {createSuccessMessage}
+          </Alert>
+        ) : (
+          <Alert
+            onClose={() => setIsSnackbarOpen(false)}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            {createFailMessage}
+          </Alert>
+        )}
+      </Snackbar>
     </div>
   );
 };
