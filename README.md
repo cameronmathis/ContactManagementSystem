@@ -19,7 +19,9 @@ I developed this Contact Management System Full Stack Application in order to fa
 In order to build and run this web application, I suggest using the following docker commands.
 
 > docker build -t contact-management-system_front-end ./FrontEnd/
+> 
 > docker build -t contact-management-system_api ./API/
+> 
 > docker-compose -p contact-management-system up
 
 You can then visit <http://localhost/> to view the web application.
