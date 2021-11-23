@@ -36,7 +36,6 @@ class EditContact extends React.Component {
       isPhoneNumberValid: true,
       isEmailAddressValid: true,
       isSnackbarOpen: false,
-      didEditSuccessfully: "",
     };
     this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }

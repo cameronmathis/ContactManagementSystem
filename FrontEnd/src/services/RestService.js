@@ -1,7 +1,12 @@
 // import constants
 import { API_URL } from "../constants/API";
 
-export function CreateContact(firstName, lastName, phoneNumber, emailAddress) {
+export async function CreateContact(
+  firstName,
+  lastName,
+  phoneNumber,
+  emailAddress
+) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -16,7 +21,7 @@ export function CreateContact(firstName, lastName, phoneNumber, emailAddress) {
   return fetch(API_URL, requestOptions).then((data) => data.json());
 }
 
-export function GetContactById(contactId) {
+export async function GetContactById(contactId) {
   const requestOptions = {};
 
   return fetch(API_URL + "/" + contactId, requestOptions).then((data) =>
@@ -24,13 +29,13 @@ export function GetContactById(contactId) {
   );
 }
 
-export function GetAllContacts() {
+export async function GetAllContacts() {
   const requestOptions = {};
 
   return fetch(API_URL, requestOptions).then((data) => data.json());
 }
 
-export function UpdateContactById(
+export async function UpdateContactById(
   contactId,
   firstName,
   lastName,
@@ -53,7 +58,7 @@ export function UpdateContactById(
   );
 }
 
-export function DeleteContactById(contactId) {
+export async function DeleteContactById(contactId) {
   const requestOptions = {
     method: "DELETE",
   };
