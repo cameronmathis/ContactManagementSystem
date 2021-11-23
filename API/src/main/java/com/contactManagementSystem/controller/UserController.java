@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
-    private PasswordUtil passwordUtil;
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
@@ -45,7 +44,7 @@ public class UserController {
     @PostMapping("/users")
     public User createUser(@Valid @RequestBody User user) {
         user.setUsername(user.getUsername());
-        user.setPassword(passwordUtil.encode(user.getPassword()));
+        user.setPassword(PasswordUtil.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -56,7 +55,7 @@ public class UserController {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this username :: " + username));
 
         user.setUsername(userDetails.getUsername());
-        user.setPassword(passwordUtil.encode(userDetails.getPassword()));
+        user.setPassword(PasswordUtil.encode(userDetails.getPassword()));
         final User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
     }
