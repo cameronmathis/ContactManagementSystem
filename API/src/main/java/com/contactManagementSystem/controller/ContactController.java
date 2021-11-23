@@ -1,10 +1,14 @@
-package com.contact.controller;
+package com.contactManagementSystem.controller;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
+
+import com.contactManagementSystem.exception.ResourceNotFoundException;
+import com.contactManagementSystem.model.Contact;
+import com.contactManagementSystem.repository.ContactRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
-import com.contact.exception.ResourceNotFoundException;
-import com.contact.model.Contact;
-import com.contact.repository.ContactRepository;
 
 @RestController
 @RequestMapping("/api")
