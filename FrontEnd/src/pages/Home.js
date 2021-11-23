@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // import services
-import { GetAllContacts } from "../services/RestService";
+import { GetAllContacts } from "../utils/RestService";
 // import constants
 import { home } from "../constants/Pages";
 import {

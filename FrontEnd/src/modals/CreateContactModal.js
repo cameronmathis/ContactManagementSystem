@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 // import services
-import { CreateContact } from "../services/RestService";
+import { CreateContact } from "../utils/RestService";
 import {
   getIsStringValid,
   getIsPhoneNumberValid,
   getIsEmailAddressValid,
-} from "../services/ValidationService";
+} from "../utils/ValidationService";
 // import constants
 import {
   snackbarPosition,

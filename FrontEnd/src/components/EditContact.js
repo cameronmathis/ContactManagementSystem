@@ -1,11 +1,11 @@
 import React from "react";
 // import services
-import { GetContactById, UpdateContactById } from "../services/RestService";
+import { GetContactById, UpdateContactById } from "../utils/RestService";
 import {
   getIsStringValid,
   getIsPhoneNumberValid,
   getIsEmailAddressValid,
-} from "../services/ValidationService";
+} from "../utils/ValidationService";
 // import constants
 import {
   snackbarPosition,
