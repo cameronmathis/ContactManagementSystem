@@ -1,10 +1,120 @@
 {
   "client": "Thunder Client",
   "collectionName": "ContactManagementSystem",
-  "dateExported": "2021-09-28T18:34:53.168Z",
+  "dateExported": "2021-11-23T18:52:47.809Z",
   "version": "1.1",
   "folders": [],
   "requests": [
+    {
+      "containerId": "",
+      "sortNum": 15000,
+      "headers": [
+        { "name": "Accept", "value": "*/*" },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "a0906c0b-743c-4717-9101-e86cf206b6c0",
+      "name": " Create User",
+      "url": "http://localhost:8080/api/users",
+      "method": "POST",
+      "modified": "2021-11-23T15:55:16.597Z",
+      "created": "2021-11-23T15:52:54.678Z",
+      "_id": "f47b768e-53e2-4373-b0db-419f283280e9",
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n    \"username\": \"username\",\n    \"password\": \"password\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "containerId": "",
+      "sortNum": 22500,
+      "headers": [
+        { "name": "Accept", "value": "*/*" },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "a0906c0b-743c-4717-9101-e86cf206b6c0",
+      "name": "Get User by Username",
+      "url": "http://localhost:8080/api/users/username",
+      "method": "GET",
+      "modified": "2021-11-23T15:55:19.021Z",
+      "created": "2021-11-23T15:54:24.098Z",
+      "_id": "f522a9a6-5b4d-4b4d-892e-5b09fabaac6e",
+      "params": [],
+      "tests": []
+    },
+    {
+      "containerId": "",
+      "sortNum": 26250,
+      "headers": [
+        { "name": "Accept", "value": "*/*" },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "a0906c0b-743c-4717-9101-e86cf206b6c0",
+      "name": "Get all Users",
+      "url": "http://localhost:8080/api/users",
+      "method": "GET",
+      "modified": "2021-11-23T15:55:20.940Z",
+      "created": "2021-11-23T15:54:50.078Z",
+      "_id": "a7b68468-3f3d-4b33-b8da-b941491af673",
+      "params": [],
+      "tests": []
+    },
+    {
+      "containerId": "",
+      "sortNum": 28125,
+      "headers": [
+        { "name": "Accept", "value": "*/*" },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "a0906c0b-743c-4717-9101-e86cf206b6c0",
+      "name": "Update User",
+      "url": "http://localhost:8080/api/users/username",
+      "method": "PUT",
+      "modified": "2021-11-23T15:58:05.893Z",
+      "created": "2021-11-23T15:55:39.725Z",
+      "_id": "33b6a195-2f88-4ef0-bb2f-d432cf6e63f9",
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n    \"username\": \"newUsername\",\n    \"password\": \"newPassword\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "containerId": "",
+      "sortNum": 29062.5,
+      "headers": [
+        { "name": "Accept", "value": "*/*" },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "a0906c0b-743c-4717-9101-e86cf206b6c0",
+      "name": "Delete User by Username",
+      "url": "http://localhost:8080/api/users/username",
+      "method": "DELETE",
+      "modified": "2021-11-23T15:57:26.575Z",
+      "created": "2021-11-23T15:57:03.097Z",
+      "_id": "fc0f9a56-f4cd-4128-8a50-1bb699d70055",
+      "params": [],
+      "tests": []
+    },
     {
       "containerId": "",
       "sortNum": 30000,
@@ -19,7 +129,7 @@
       "name": " Create Contact",
       "url": "http://localhost:8080/api/contacts",
       "method": "POST",
-      "modified": "2021-09-28T18:34:17.213Z",
+      "modified": "2021-11-22T19:45:06.510Z",
       "created": "2021-09-24T15:44:51.707Z",
       "_id": "bda51de3-d61b-4613-9da6-e37c645a6a78",
       "params": [],
@@ -97,7 +207,7 @@
     },
     {
       "containerId": "",
-      "sortNum": 70000,
+      "sortNum": 80000,
       "headers": [
         { "name": "Accept", "value": "*/*" },
         {
@@ -106,12 +216,12 @@
         }
       ],
       "colId": "a0906c0b-743c-4717-9101-e86cf206b6c0",
-      "name": "Delete Contact",
+      "name": "Delete Contact by Id",
       "url": "http://localhost:8080/api/contacts/1",
       "method": "DELETE",
       "modified": "2021-09-28T18:34:31.057Z",
       "created": "2021-09-24T15:52:37.647Z",
-      "_id": "adb2313f-d321-496b-8403-81b6952e5861",
+      "_id": "899099f6-3978-4894-b90d-df2b8ce8e812",
       "params": [],
       "tests": []
     }

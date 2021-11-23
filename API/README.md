@@ -19,6 +19,7 @@ I developed this Contact Management System in order to familiarize myself with C
 In order to build and run this API, I suggest using the following docker commands.
 
 > docker build -t contact-management-system_api .
+> 
 > docker-compose -p contact-management-system_api up
 
 You can then use the ContactManagementSystem-collection.json file to make API calls.

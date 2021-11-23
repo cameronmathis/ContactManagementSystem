@@ -1,11 +1,11 @@
 import React from "react";
-// import services
-import { GetContactById, UpdateContactById } from "../services/RestService";
+// import utils
+import { GetContactById, UpdateContactById } from "../utils/RestUtil";
 import {
   getIsStringValid,
   getIsPhoneNumberValid,
   getIsEmailAddressValid,
-} from "../services/ValidationService";
+} from "../utils/ValidationUtil";
 // import constants
 import {
   snackbarPosition,
@@ -52,7 +52,7 @@ class EditContact extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         this.setState({ didFetchSuccessfully: false });
         this.setState({ isSnackbarOpen: true });
       });
@@ -83,7 +83,7 @@ class EditContact extends React.Component {
           this.props.setIsViewing(true);
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error.message);
           this.props.setDidEditSuccessfully(false);
           this.props.setIsSnackbarOpen(true);
         });

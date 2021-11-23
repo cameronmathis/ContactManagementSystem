@@ -45,7 +45,7 @@ Database: PostgreSQL 9.6 <br/>
 
 ### Other
 
-Hosting Platform: GCP Compute Engine <br/>
+Hosting Platform: Personal Ubuntu Server <br/>
 Container Management Framework: Docker <br/>
 
 ## Status

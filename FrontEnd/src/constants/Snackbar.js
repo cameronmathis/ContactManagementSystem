@@ -1,11 +1,20 @@
 export const snackbarPosition = { vertical: "top", horizontal: "center" };
 export const snackbarDuration = 4000;
 
+// USERS
+
+export const signUpSuccessMessage = "Successfully Signed Up!";
+export const signUpFailMessage = "Failed to Sign-Up";
+
+export const usernameTakenMessage = "Username Already Taken";
+
+// CONTACTS
+
 export const fetchContactFailMessage = "Failed to Fetch Contact";
 export const fetchContactsFailMessage = "Failed to Fetch Contacts";
 
-export const createSuccessMessage = "Contact Created Successfully!";
-export const createFailMessage = "Contact Creation Failed";
+export const createContactSuccessMessage = "Contact Created Successfully!";
+export const createContactFailMessage = "Contact Creation Failed";
 
 export const editSuccessMessage = "Contact Edited Successfully!";
 export const editFailMessage = "Contact Edit Failed";
