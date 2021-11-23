@@ -42,3 +42,22 @@
 .newContactButton-spacer {
   width: 5px;
 }
+
+.signUpButton > .MuiButton-root {
+  padding: 6px 12px;
+}
+
+.signUpButton > .MuiButton-contained {
+  color: var(--clr-light);
+  background-color: var(--clr-accent);
+}
+
+.signUpButton > .MuiButton-contained:hover {
+  background-color: var(--clr-accent-dark);
+}
+
+.signUpButton-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}

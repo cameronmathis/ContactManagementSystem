@@ -15,7 +15,7 @@ import {
 } from "../constants/Snackbar";
 // import styles
 import { makeStyles } from "@material-ui/core/styles";
-// import icons
+// import button
 import Button from "@material-ui/core/Button";
 // import modals
 import Modal from "@material-ui/core/Modal";
@@ -189,6 +189,7 @@ const CreateContactModal = ({
                   value={emailAddress}
                   onChange={(e) => setEmailAddress(e.target.value)}
                   placeholder="Email Address"
+                  type="email"
                 />
               ) : (
                 <input
@@ -196,6 +197,7 @@ const CreateContactModal = ({
                   value={emailAddress}
                   onChange={(e) => setEmailAddress(e.target.value)}
                   placeholder="Email Address"
+                  type="email"
                 />
               )}
             </body>

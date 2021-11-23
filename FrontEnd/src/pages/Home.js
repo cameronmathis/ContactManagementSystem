@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 // import services
 import { GetAllContacts } from "../services/RestService";
 // import constants
+import { home } from "../constants/Pages";
 import {
   snackbarPosition,
   snackbarDuration,
@@ -22,6 +23,7 @@ function Home() {
   const [contactsList, setContactsList] = useState([]);
   const [openedContactId, setOpenContactId] = useState([]);
   const [isViewing, setIsViewing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
   useEffect(() => {
@@ -54,18 +56,21 @@ function Home() {
 
   return (
     <div className="home">
-      <Header />
+      <Header page={home} />
       <body className="body">
         <ContactList
           setOpenContactId={setOpenContactId}
           setIsViewing={setIsViewing}
+          setIsEditing={setIsEditing}
           contactsList={contactsList}
           openedContactId={openedContactId}
         />
         {!!openedContactId ? (
           <OpenedContact
             setIsViewing={setIsViewing}
+            setIsEditing={setIsEditing}
             isViewing={isViewing}
+            isEditing={isEditing}
             contactId={openedContactId}
           />
         ) : null}

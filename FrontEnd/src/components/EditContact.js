@@ -12,7 +12,7 @@ import {
   snackbarDuration,
   fetchContactFailMessage,
 } from "../constants/Snackbar";
-// import icons
+// import button
 import Button from "@material-ui/core/Button";
 // import snackbar
 import Snackbar from "@material-ui/core/Snackbar";
@@ -151,13 +151,13 @@ class EditContact extends React.Component {
             <body>
               <div className="firstNameInput-container openedContactInput-container">
                 {this.state.isFirstNameValid ? (
-                  <p className="firstNameInput-label openedContactInput-label">
+                  <label className="firstNameInput-label openedContactInput-label">
                     First Name
-                  </p>
+                  </label>
                 ) : (
-                  <p className="firstNameInput-label openedContactInput-label-invalid">
+                  <label className="firstNameInput-label openedContactInput-label-invalid">
                     First Name
-                  </p>
+                  </label>
                 )}
                 <input
                   className="firstName-input openedContact-input"
@@ -168,13 +168,13 @@ class EditContact extends React.Component {
               </div>
               <div className="lastNameInput-container openedContactInput-container">
                 {this.state.isLastNameValid ? (
-                  <p className="lastNameInput-label openedContactInput-label">
+                  <label className="lastNameInput-label openedContactInput-label">
                     Last Name
-                  </p>
+                  </label>
                 ) : (
-                  <p className="lastNameInput-label openedContactInput-label-invalid">
+                  <label className="lastNameInput-label openedContactInput-label-invalid">
                     Last Name
-                  </p>
+                  </label>
                 )}
                 <input
                   className="lastName-input openedContact-input"
@@ -185,13 +185,13 @@ class EditContact extends React.Component {
               </div>
               <div className="phoneNumberInput-container openedContactInput-container">
                 {this.state.isPhoneNumberValid ? (
-                  <p className="phoneNumberInput-label openedContactInput-label">
+                  <label className="phoneNumberInput-label openedContactInput-label">
                     Phone Number
-                  </p>
+                  </label>
                 ) : (
-                  <p className="phoneNumberInput-label openedContactInput-label-invalid">
+                  <label className="phoneNumberInput-label openedContactInput-label-invalid">
                     Phone Number
-                  </p>
+                  </label>
                 )}
                 <input
                   className="phoneNumber-input openedContact-input"
@@ -202,19 +202,20 @@ class EditContact extends React.Component {
               </div>
               <div className="emailAddressInput-container openedContactInput-container">
                 {this.state.isEmailAddressValid ? (
-                  <p className="emailAddressInput-label openedContactInput-label">
+                  <label className="emailAddressInput-label openedContactInput-label">
                     Email Address
-                  </p>
+                  </label>
                 ) : (
-                  <p className="emailAddressInput-label openedContactInput-label-invalid">
+                  <label className="emailAddressInput-label openedContactInput-label-invalid">
                     Email Address
-                  </p>
+                  </label>
                 )}
                 <input
                   className="emailAddress-input openedContact-input"
                   value={this.state.emailAddress}
                   onChange={this.handleInputChange("emailAddress")}
                   placeholder="Email Address"
+                  type="email"
                 />
               </div>
             </body>
