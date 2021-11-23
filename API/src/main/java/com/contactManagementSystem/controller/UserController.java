@@ -1,6 +1,7 @@
 package com.contactManagementSystem.controller;
 
 import com.contactManagementSystem.exception.ResourceNotFoundException;
+import com.contactManagementSystem.exception.UsernameAlreadyExistException;
 import com.contactManagementSystem.model.User;
 import com.contactManagementSystem.repository.UserRepository;
 import com.contactManagementSystem.utils.PasswordUtil;
@@ -8,6 +9,7 @@ import com.contactManagementSystem.utils.PasswordUtil;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -42,7 +44,12 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public User createUser(@Valid @RequestBody User user) {
+    public User createUser(@Valid @RequestBody User user) throws UsernameAlreadyExistException {
+        User existingUser = userRepository.findByUsername(user.getUsername()).orElse(null);
+        if (existingUser != null) {
+            throw new UsernameAlreadyExistException("User already exists with this username :: " + user.getUsername());
+        }
+
         user.setUsername(user.getUsername());
         user.setPassword(PasswordUtil.encode(user.getPassword()));
         return userRepository.save(user);
