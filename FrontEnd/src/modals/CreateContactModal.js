@@ -93,6 +93,7 @@ const CreateContactModal = ({
           setCreateContactModalShown(false);
         })
         .catch((error) => {
+          console.log(error.message);
           setDidCreateSuccessfully(false);
           setIsSnackbarOpen(true);
         });

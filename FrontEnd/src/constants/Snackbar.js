@@ -6,6 +6,8 @@ export const snackbarDuration = 4000;
 export const signUpSuccessMessage = "Successfully Signed Up!";
 export const signUpFailMessage = "Failed to Sign-Up";
 
+export const usernameTakenMessage = "Username Already Taken";
+
 // CONTACTS
 
 export const fetchContactFailMessage = "Failed to Fetch Contact";

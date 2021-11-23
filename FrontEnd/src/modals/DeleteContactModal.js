@@ -55,6 +55,7 @@ const DeleteContactModal = ({
         setIsDeleteContactModalShown(false);
       })
       .catch((error) => {
+        console.log(error.message);
         setDidDeleteSuccessfully(false);
         setIsSnackbarOpen(true);
       });

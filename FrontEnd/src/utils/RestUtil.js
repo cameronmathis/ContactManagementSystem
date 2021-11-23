@@ -1,6 +1,13 @@
 // import constants
 import { API_URL } from "../constants/API";
 
+// custom exception
+function FetchError(status, message) {
+  this.status = status;
+  this.message = message;
+}
+FetchError.prototype = new Error();
+
 // USERS
 
 export async function CreateUser(username, password) {
@@ -13,14 +20,30 @@ export async function CreateUser(username, password) {
     }),
   };
 
-  return fetch(API_URL + "/users", requestOptions).then((data) => data.json());
+  return fetch(API_URL + "/users", requestOptions).then((response) => {
+    if (!response.ok)
+      throw new FetchError(
+        response.status,
+        "Error with CreateUser(). Status: " + response.status
+      );
+
+    return response.json();
+  });
 }
 
 export async function GetUserByUsername(username) {
   const requestOptions = {};
 
-  return fetch(API_URL + "/users/" + username, requestOptions).then((data) =>
-    data.json()
+  return fetch(API_URL + "/users/" + username, requestOptions).then(
+    (response) => {
+      if (!response.ok)
+        throw new FetchError(
+          response.status,
+          "Error with GetUserByUsername(). Status: " + response.status
+        );
+
+      return response.json();
+    }
   );
 }
 
@@ -43,25 +66,45 @@ export async function CreateContact(
     }),
   };
 
-  return fetch(API_URL + "/contacts", requestOptions).then((data) =>
-    data.json()
-  );
+  return fetch(API_URL + "/contacts", requestOptions).then((response) => {
+    if (!response.ok)
+      throw new FetchError(
+        response.status,
+        "Error with CreateContact(). Status: " + response.status
+      );
+
+    return response.json();
+  });
 }
 
 export async function GetContactById(contactId) {
   const requestOptions = {};
 
   return fetch(API_URL + "/contacts/" + contactId, requestOptions).then(
-    (data) => data.json()
+    (response) => {
+      if (!response.ok)
+        throw new FetchError(
+          response.status,
+          "Error with GetContactById(). Status: " + response.status
+        );
+
+      return response.json();
+    }
   );
 }
 
 export async function GetAllContacts() {
   const requestOptions = {};
 
-  return fetch(API_URL + "/contacts", requestOptions).then((data) =>
-    data.json()
-  );
+  return fetch(API_URL + "/contacts", requestOptions).then((response) => {
+    if (!response.ok)
+      throw new FetchError(
+        response.status,
+        "Error with GetAllContacts(). Status: " + response.status
+      );
+
+    return response.json();
+  });
 }
 
 export async function UpdateContactById(
@@ -83,7 +126,15 @@ export async function UpdateContactById(
   };
 
   return fetch(API_URL + "/contacts/" + contactId, requestOptions).then(
-    (data) => data.json()
+    (response) => {
+      if (!response.ok)
+        throw new FetchError(
+          response.status,
+          "Error with UpdateContactById(). Status: " + response.status
+        );
+
+      return response.json();
+    }
   );
 }
 
@@ -93,6 +144,14 @@ export async function DeleteContactById(contactId) {
   };
 
   return fetch(API_URL + "/contacts/" + contactId, requestOptions).then(
-    (data) => data.json()
+    (response) => {
+      if (!response.ok)
+        throw new FetchError(
+          response.status,
+          "Error with DeleteContactById(). Status: " + response.status
+        );
+
+      return response.json();
+    }
   );
 }

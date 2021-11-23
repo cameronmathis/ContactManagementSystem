@@ -45,6 +45,7 @@ function Home() {
         setContactsList(sortedContacts);
       })
       .catch((error) => {
+        console.log(error.message);
         setIsSnackbarOpen(true);
       });
   }

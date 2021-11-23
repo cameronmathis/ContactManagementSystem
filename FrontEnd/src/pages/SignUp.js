@@ -8,6 +8,7 @@ import { signUp } from "../constants/Pages";
 import {
   snackbarPosition,
   snackbarDuration,
+  usernameTakenMessage,
   signUpFailMessage,
 } from "../constants/Snackbar";
 // import components
@@ -33,16 +34,22 @@ function SignUp() {
   const [isPasswordTwoValid, setIsPasswordTwoValid] = useState(true);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(true);
 
+  const [isUsernameTaken, setIsUsernameTaken] = useState(false);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
   const submitSignUp = () => {
     if (areValuesValid()) {
       CreateUser(username, passwordOne)
         .then(() => {
+          setIsUsernameTaken(false);
           setIsSnackbarOpen(false);
           navigate("/home");
         })
         .catch((error) => {
+          console.log(error.message);
+          if (error.status === 500) {
+            setIsUsernameTaken(true);
+          }
           setIsSnackbarOpen(true);
         });
     }
@@ -157,13 +164,24 @@ function SignUp() {
         autoHideDuration={snackbarDuration}
         onClose={() => setIsSnackbarOpen(false)}
       >
-        <Alert
-          onClose={() => setIsSnackbarOpen(false)}
-          severity="error"
-          sx={{ width: "100%" }}
-        >
-          {signUpFailMessage}
-        </Alert>
+        {isUsernameTaken ? (
+          <Alert
+            onClose={() => setIsSnackbarOpen(false)}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            {usernameTakenMessage}
+          </Alert>
+        ) : null}
+        {!isUsernameTaken ? (
+          <Alert
+            onClose={() => setIsSnackbarOpen(false)}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            {signUpFailMessage}
+          </Alert>
+        ) : null}
       </Snackbar>
     </div>
   );
