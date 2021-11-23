@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import utils
+import { CreateUser } from "../utils/RestUtil";
 import { getIsStringValid } from "../utils/ValidationUtil";
 // import constants
 import { signUp } from "../constants/Pages";
+import {
+  snackbarPosition,
+  snackbarDuration,
+  signUpFailMessage,
+} from "../constants/Snackbar";
 // import components
 import Header from "../components/Header";
 // import button
 import Button from "@material-ui/core/Button";
+// import snackbar
+import Snackbar from "@material-ui/core/Snackbar";
+// import alert
+import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/SignUp.css";
 
@@ -23,11 +33,18 @@ function SignUp() {
   const [isPasswordTwoValid, setIsPasswordTwoValid] = useState(true);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(true);
 
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+
   const submitSignUp = () => {
-    if (areValuesValid() && !isUsernameTaken()) {
-      console.log("Username: " + username);
-      console.log("Password: " + passwordOne);
-      navigate("/home");
+    if (areValuesValid()) {
+      CreateUser(username, passwordOne)
+        .then(() => {
+          setIsSnackbarOpen(false);
+          navigate("/home");
+        })
+        .catch((error) => {
+          setIsSnackbarOpen(true);
+        });
     }
   };
 
@@ -59,11 +76,6 @@ function SignUp() {
     } else {
       setDoPasswordsMatch(true);
     }
-    return result;
-  };
-
-  const isUsernameTaken = () => {
-    let result = false;
     return result;
   };
 
@@ -139,6 +151,20 @@ function SignUp() {
           </div>
         </footer>
       </div>
+      <Snackbar
+        anchorOrigin={snackbarPosition}
+        open={isSnackbarOpen}
+        autoHideDuration={snackbarDuration}
+        onClose={() => setIsSnackbarOpen(false)}
+      >
+        <Alert
+          onClose={() => setIsSnackbarOpen(false)}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          {signUpFailMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

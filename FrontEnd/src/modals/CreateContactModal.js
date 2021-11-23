@@ -10,8 +10,8 @@ import {
 import {
   snackbarPosition,
   snackbarDuration,
-  createSuccessMessage,
-  createFailMessage,
+  createContactSuccessMessage,
+  createContactFailMessage,
 } from "../constants/Snackbar";
 // import styles
 import { makeStyles } from "@material-ui/core/styles";
@@ -93,7 +93,6 @@ const CreateContactModal = ({
           setCreateContactModalShown(false);
         })
         .catch((error) => {
-          console.log(error);
           setDidCreateSuccessfully(false);
           setIsSnackbarOpen(true);
         });
@@ -238,7 +237,7 @@ const CreateContactModal = ({
             severity="success"
             sx={{ width: "100%" }}
           >
-            {createSuccessMessage}
+            {createContactSuccessMessage}
           </Alert>
         ) : (
           <Alert
@@ -246,7 +245,7 @@ const CreateContactModal = ({
             severity="error"
             sx={{ width: "100%" }}
           >
-            {createFailMessage}
+            {createContactFailMessage}
           </Alert>
         )}
       </Snackbar>

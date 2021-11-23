@@ -52,7 +52,6 @@ class EditContact extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ didFetchSuccessfully: false });
         this.setState({ isSnackbarOpen: true });
       });
@@ -83,7 +82,6 @@ class EditContact extends React.Component {
           this.props.setIsViewing(true);
         })
         .catch((error) => {
-          console.log(error);
           this.props.setDidEditSuccessfully(false);
           this.props.setIsSnackbarOpen(true);
         });

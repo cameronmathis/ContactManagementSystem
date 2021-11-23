@@ -47,7 +47,6 @@ class ViewContact extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ didFetchSuccessfully: false });
         this.setState({ isSnackbarOpen: true });
       });
@@ -74,7 +73,6 @@ class ViewContact extends React.Component {
           });
         })
         .catch((error) => {
-          console.log(error);
           this.setState({ didFetchSuccessfully: false });
           this.setState({ isSnackbarOpen: true });
         });
