@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import services
-import { DeleteContactById } from "../services/RestService";
+// import utils
+import { DeleteContactById } from "../utils/RestUtil";
 // import styles
 import { makeStyles } from "@material-ui/core/styles";
 // import button
@@ -55,7 +55,7 @@ const DeleteContactModal = ({
         setIsDeleteContactModalShown(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         setDidDeleteSuccessfully(false);
         setIsSnackbarOpen(true);
       });

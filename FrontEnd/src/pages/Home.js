@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-// import services
-import { GetAllContacts } from "../services/RestService";
+// import utils
+import { GetAllContacts } from "../utils/RestUtil";
 // import constants
 import { home } from "../constants/Pages";
 import {
@@ -45,7 +45,7 @@ function Home() {
         setContactsList(sortedContacts);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         setIsSnackbarOpen(true);
       });
   }
