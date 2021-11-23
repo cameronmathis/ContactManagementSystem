@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import services
+// import utils
 import { GetAllContacts } from "../utils/RestUtil";
 // import constants
 import { home } from "../constants/Pages";

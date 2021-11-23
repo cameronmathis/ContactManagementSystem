@@ -1,5 +1,5 @@
 import React from "react";
-// import services
+// import utils
 import { GetContactById, UpdateContactById } from "../utils/RestUtil";
 import {
   getIsStringValid,

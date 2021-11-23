@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import services
+// import utils
 import { getIsStringValid } from "../utils/ValidationUtil";
 // import constants
 import { signUp } from "../constants/Pages";
