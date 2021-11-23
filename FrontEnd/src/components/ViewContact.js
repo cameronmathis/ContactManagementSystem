@@ -1,6 +1,6 @@
 import React from "react";
 // import services
-import { GetContactById } from "../utils/RestService";
+import { GetContactById } from "../utils/RestUtil";
 // import constants
 import {
   snackbarPosition,

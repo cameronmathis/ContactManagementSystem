@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import services
-import { DeleteContactById } from "../utils/RestService";
+import { DeleteContactById } from "../utils/RestUtil";
 // import styles
 import { makeStyles } from "@material-ui/core/styles";
 // import button

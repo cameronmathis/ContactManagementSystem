@@ -1,6 +1,31 @@
 // import constants
 import { API_URL } from "../constants/API";
 
+// USERS
+
+export async function CreateUser(username, password) {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+  };
+
+  return fetch(API_URL + "/users", requestOptions).then((data) => data.json());
+}
+
+export async function GetUserByUsername(username) {
+  const requestOptions = {};
+
+  return fetch(API_URL + "/users/" + username, requestOptions).then((data) =>
+    data.json()
+  );
+}
+
+// CONTACTS
+
 export async function CreateContact(
   firstName,
   lastName,
@@ -18,21 +43,25 @@ export async function CreateContact(
     }),
   };
 
-  return fetch(API_URL, requestOptions).then((data) => data.json());
+  return fetch(API_URL + "/contacts", requestOptions).then((data) =>
+    data.json()
+  );
 }
 
 export async function GetContactById(contactId) {
   const requestOptions = {};
 
-  return fetch(API_URL + "/" + contactId, requestOptions).then((data) =>
-    data.json()
+  return fetch(API_URL + "/contacts/" + contactId, requestOptions).then(
+    (data) => data.json()
   );
 }
 
 export async function GetAllContacts() {
   const requestOptions = {};
 
-  return fetch(API_URL, requestOptions).then((data) => data.json());
+  return fetch(API_URL + "/contacts", requestOptions).then((data) =>
+    data.json()
+  );
 }
 
 export async function UpdateContactById(
@@ -53,8 +82,8 @@ export async function UpdateContactById(
     }),
   };
 
-  return fetch(API_URL + "/" + contactId, requestOptions).then((data) =>
-    data.json()
+  return fetch(API_URL + "/contacts/" + contactId, requestOptions).then(
+    (data) => data.json()
   );
 }
 
@@ -63,7 +92,7 @@ export async function DeleteContactById(contactId) {
     method: "DELETE",
   };
 
-  return fetch(API_URL + "/" + contactId, requestOptions).then((data) =>
-    data.json()
+  return fetch(API_URL + "/contacts/" + contactId, requestOptions).then(
+    (data) => data.json()
   );
 }

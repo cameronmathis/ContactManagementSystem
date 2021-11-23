@@ -9,7 +9,6 @@ import com.contactManagementSystem.utils.PasswordUtil;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -68,7 +67,7 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{username}")
-    public Map<String, Boolean> deleteUser(@PathVariable(value = "id") String username)
+    public Map<String, Boolean> deleteUser(@PathVariable(value = "username") String username)
             throws ResourceNotFoundException {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this username :: " + username));
