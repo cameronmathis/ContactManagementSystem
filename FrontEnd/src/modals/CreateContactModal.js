@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const CreateContactModal = ({
   isCreateContactModalShown,
   setCreateContactModalShown,
+  updateContactsList,
 }) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -91,6 +92,7 @@ const CreateContactModal = ({
           setDidCreateSuccessfully(true);
           setIsSnackbarOpen(true);
           setCreateContactModalShown(false);
+          updateContactsList();
         })
         .catch((error) => {
           console.log(error.message);

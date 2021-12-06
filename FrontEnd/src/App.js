@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,15 +16,17 @@ import { LOGIN, SIGN_UP, HOME } from "./constants/Pages";
 import "./css/App.css";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />}></Route>
-          <Route path={LOGIN} element={<Login />}></Route>
-          <Route path={SIGN_UP} element={<SignUp />}></Route>
-          <Route path={HOME} element={<Home />}></Route>
-          <Route path="*" element={<PageNotFound />}></Route>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path={LOGIN} element={<Login />} />
+          <Route path={SIGN_UP} element={<SignUp />} />
+          {isLoggedIn && <Route path={HOME} element={<Home />} />}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </div>

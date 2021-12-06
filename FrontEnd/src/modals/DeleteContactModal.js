@@ -37,11 +37,9 @@ const useStyles = makeStyles((theme) => ({
 
 const DeleteContactModal = ({
   setDidDeleteSuccessfully,
-  setIsSnackbarOpen,
-  setIsViewing,
   setIsDeleteContactModalShown,
-  contactId,
   isDeleteContactModalShown,
+  contactId,
 }) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -50,14 +48,11 @@ const DeleteContactModal = ({
     DeleteContactById(contactId)
       .then(() => {
         setDidDeleteSuccessfully(true);
-        setIsSnackbarOpen(true);
-        setIsViewing(false);
         setIsDeleteContactModalShown(false);
       })
       .catch((error) => {
         console.log(error.message);
         setDidDeleteSuccessfully(false);
-        setIsSnackbarOpen(true);
       });
   };
 

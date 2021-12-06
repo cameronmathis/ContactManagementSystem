@@ -140,15 +140,13 @@ class ViewContact extends React.Component {
                     setDidDeleteSuccessfully={
                       this.props.setDidDeleteSuccessfully
                     }
-                    setIsSnackbarOpen={this.props.setIsSnackbarOpen}
                     setIsDeleteContactModalShown={
                       this.setIsDeleteContactModalShown
                     }
-                    setIsViewing={this.props.setIsViewing}
-                    contactId={this.state.contactId}
                     isDeleteContactModalShown={
                       this.state.isDeleteContactModalShown
                     }
+                    contactId={this.state.contactId}
                   />
                 </div>
                 <div className="editContactButton openedContactView-button">
