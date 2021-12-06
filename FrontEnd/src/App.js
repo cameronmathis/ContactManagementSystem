@@ -10,7 +10,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
 // import constants
-import { LOGIN, SIGN_UP, HOME } from "../constants/Pages";
+import { LOGIN, SIGN_UP, HOME } from "./constants/Pages";
 // import css
 import "./css/App.css";
 
