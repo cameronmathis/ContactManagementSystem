@@ -22,7 +22,7 @@ import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/SignUp.css";
 
-function SignUp() {
+const SignUp = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -43,6 +43,7 @@ function SignUp() {
         .then(() => {
           setIsUsernameTaken(false);
           setIsSnackbarOpen(false);
+          setIsLoggedIn(true);
           navigate("/home");
         })
         .catch((error) => {
@@ -185,6 +186,6 @@ function SignUp() {
       </Snackbar>
     </div>
   );
-}
+};
 
 export default SignUp;
