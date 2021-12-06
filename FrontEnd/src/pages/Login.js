@@ -22,8 +22,6 @@ function Login() {
 
   const submitLogin = () => {
     if (areValuesValid() && doesAccountExist()) {
-      console.log("Username: " + username);
-      console.log("Password: " + password);
       navigate("/home");
     }
   };
