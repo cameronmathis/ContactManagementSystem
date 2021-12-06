@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 // import css
 import "./css/Login.css";
 
-function Login() {
+const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -22,6 +22,7 @@ function Login() {
 
   const submitLogin = () => {
     if (areValuesValid() && doesAccountExist()) {
+      setIsLoggedIn(true);
       navigate("/home");
     }
   };
@@ -101,6 +102,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
