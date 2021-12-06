@@ -50,8 +50,12 @@ const Header = ({ page, updateContactsList }) => {
               onClick={showNewContactModal}
             >
               <div className="newContactButton-text">New Contact</div>
-              <div className="newContactButton-spacer"></div>
-              <AddIcon className="newContactButton-icon" fontSize="medium" />
+              <div className="newContactButton-spacer" />
+              <AddIcon
+                className="newContactButton-icon"
+                fontSize="medium"
+                htmlColor="#ffffff"
+              />
             </Button>
             <CreateContactModal
               isCreateContactModalShown={isCreateContactModalShown}

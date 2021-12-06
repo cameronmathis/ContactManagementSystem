@@ -37,6 +37,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .newContactButton-spacer {
@@ -60,4 +61,8 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.signUpButton .MuiSvgIcon-root {
+  color: #ffffff;
 }

@@ -2,8 +2,9 @@
   border-bottom: 2px solid var(--clr-medium);
 }
 
-.openedContactEdit-container > header > h2 {
+.openedContactEdit-container header > h2 {
   margin: 0px 5px 5px 5px;
+  color: var(--txt-dark);
 }
 
 .openedContactEdit-container > body {
@@ -31,6 +32,7 @@
 
 .openedContactInput-label {
   border-bottom: 2px solid var(--clr-accent);
+  color: var(--txt-dark);
 }
 
 .openedContactInput-label-invalid {
@@ -46,8 +48,12 @@
   outline: none;
   border: none;
   border-radius: 5px;
-  color: var(--clr-dark);
+  color: var(--txt-dark);
   background-color: var(--clr-medium);
+}
+
+.openedContact-input::placeholder {
+  color: var(--clr-dark);
 }
 
 .openedContactEdit-buttons {
@@ -76,6 +82,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .submitEditContactButton > .MuiButton-root {
@@ -95,4 +102,5 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }

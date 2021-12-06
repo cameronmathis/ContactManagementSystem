@@ -81,6 +81,8 @@ class OpenedContact extends React.Component {
         ) : null}
         {this.props.isEditing ? (
           <EditContact
+            setIsViewing={this.props.setIsViewing}
+            setIsEditing={this.props.setIsEditing}
             setDidEditSuccessfully={this.setDidEditSuccessfully}
             contactId={this.state.contactId}
           />
