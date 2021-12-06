@@ -37,16 +37,27 @@ class OpenedContact extends React.Component {
     return null;
   }
 
-  setIsSnackbarOpen = (bool) => {
+  setIsSnackbarOpen(bool) {
     this.setState({ isSnackbarOpen: bool });
-  };
+  }
 
   setDidDeleteSuccessfully = (bool) => {
     this.setState({ didDeleteSuccessfully: bool });
+    this.setState({ isSnackbarOpen: true });
+    if (bool) {
+      this.props.setIsViewing(true);
+      this.props.updateContactsList();
+    }
   };
 
   setDidEditSuccessfully = (bool) => {
     this.setState({ didEditSuccessfully: bool });
+    this.setState({ isSnackbarOpen: true });
+    if (bool) {
+      this.props.setIsEditing(false);
+      this.props.setIsViewing(true);
+      this.props.updateContactsList();
+    }
   };
 
   handleCloseSnackbar() {
@@ -64,16 +75,12 @@ class OpenedContact extends React.Component {
           <ViewContact
             setIsViewing={this.props.setIsViewing}
             setIsEditing={this.props.setIsEditing}
-            setIsSnackbarOpen={this.setIsSnackbarOpen}
             setDidDeleteSuccessfully={this.setDidDeleteSuccessfully}
             contactId={this.state.contactId}
           />
         ) : null}
         {this.props.isEditing ? (
           <EditContact
-            setIsViewing={this.props.setIsViewing}
-            setIsEditing={this.props.setIsEditing}
-            setIsSnackbarOpen={this.setIsSnackbarOpen}
             setDidEditSuccessfully={this.setDidEditSuccessfully}
             contactId={this.state.contactId}
           />

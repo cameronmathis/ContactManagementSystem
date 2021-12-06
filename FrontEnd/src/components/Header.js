@@ -11,7 +11,7 @@ import CreateContactModal from "../modals/CreateContactModal";
 // import css
 import "./css/Header.css";
 
-const Header = ({ page }) => {
+const Header = ({ page, updateContactsList }) => {
   const navigate = useNavigate();
 
   const [isCreateContactModalShown, setCreateContactModalShown] =
@@ -56,6 +56,7 @@ const Header = ({ page }) => {
             <CreateContactModal
               isCreateContactModalShown={isCreateContactModalShown}
               setCreateContactModalShown={setCreateContactModalShown}
+              updateContactsList={updateContactsList}
             />
           </div>
         ) : null}

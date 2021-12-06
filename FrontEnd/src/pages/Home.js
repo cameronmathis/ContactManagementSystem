@@ -28,7 +28,7 @@ function Home() {
 
   useEffect(() => {
     updateContactsList();
-  }, [contactsList]);
+  });
 
   function updateContactsList() {
     GetAllContacts()
@@ -42,12 +42,34 @@ function Home() {
               : -1
             : -1
         );
-        setContactsList(sortedContacts);
+        if (!areContactListsEqual(sortedContacts, contactsList))
+          setContactsList(sortedContacts);
       })
       .catch((error) => {
         console.log(error.message);
         setIsSnackbarOpen(true);
       });
+  }
+
+  const areContactListsEqual = (contactList1, contactList2) => {
+    if (contactList1.length !== contactList2.length) {
+      return false;
+    } else if (
+      contactList1.every((contact, index) =>
+        areContactsEqual(contact, contactList2[index])
+      )
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  function areContactsEqual(contact1, contact2) {
+    if (contact1.id !== contact2.id) return false;
+    if (contact1.firstName !== contact2.firstName) return false;
+    if (contact1.lastName !== contact2.lastName) return false;
+    return true;
   }
 
   const handleCloseSnackbar = () => {
@@ -56,7 +78,7 @@ function Home() {
 
   return (
     <div className="home">
-      <Header page={HOME} />
+      <Header page={HOME} updateContactsList={updateContactsList} />
       <body className="body">
         <ContactList
           setOpenContactId={setOpenContactId}
@@ -72,6 +94,7 @@ function Home() {
             isViewing={isViewing}
             isEditing={isEditing}
             contactId={openedContactId}
+            updateContactsList={updateContactsList}
           />
         ) : null}
       </body>
