@@ -12,4 +12,4 @@ None
 
 ## Reporting a Vulnerability
 
-If you find a security vulnerability, please report it under the [Issues](https://github.com/cameronmathis/ContactManagementSystem/issues/new/choose) tab of this repository and choose "security issue".
+If you find a security vulnerability, please report it as a "[Security Issue](https://github.com/cameronmathis/ContactManagementSystem/issues/new?assignees=&labels=security+issue&template=security_issue.md&title=)" under the Issues tab of this repository.
