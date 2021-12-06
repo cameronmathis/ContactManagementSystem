@@ -1,4 +1,4 @@
-export const login = "login";
-export const signUp = "signUp";
-export const home = "home";
-export const pageNotFound = "pageNotFound";
+export const LOGIN = "login";
+export const SIGN_UP = "signUp";
+export const HOME = "home";
+export const PAGE_NOT_FOUND = "pageNotFound";

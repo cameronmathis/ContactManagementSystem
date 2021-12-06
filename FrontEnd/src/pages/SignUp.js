@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CreateUser } from "../utils/RestUtil";
 import { getIsStringValid } from "../utils/ValidationUtil";
 // import constants
-import { signUp } from "../constants/Pages";
+import { SIGN_UP } from "../constants/Pages";
 import {
   snackbarPosition,
   snackbarDuration,
@@ -88,7 +88,7 @@ function SignUp() {
 
   return (
     <div className="signUp-container">
-      <Header page={signUp} />
+      <Header page={SIGN_UP} />
       <div className="signUp-content">
         <body>
           {isUsernameValid ? (

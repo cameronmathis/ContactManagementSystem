@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import constants
-import { login, home } from "../constants/Pages";
+import { LOGIN, HOME } from "../constants/Pages";
 // import buttons
 import Button from "@material-ui/core/Button";
 // import icons
@@ -31,7 +31,7 @@ const Header = ({ page }) => {
         <h1>Contact Management System</h1>
       </div>
       <div className="headerRight">
-        {page === login ? (
+        {page === LOGIN ? (
           <div className="signUpButton">
             <Button
               variant="contained"
@@ -42,7 +42,7 @@ const Header = ({ page }) => {
             </Button>
           </div>
         ) : null}
-        {page === home ? (
+        {page === HOME ? (
           <div className="newContactButton">
             <Button
               variant="contained"

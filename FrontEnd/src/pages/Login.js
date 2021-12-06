@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import utils
 import { getIsStringValid } from "../utils/ValidationUtil";
 // import constants
-import { login } from "../constants/Pages";
+import { LOGIN } from "../constants/Pages";
 // import components
 import Header from "../components/Header";
 // import button
@@ -52,7 +52,7 @@ function Login() {
 
   return (
     <div className="login-container">
-      <Header page={login} />
+      <Header page={LOGIN} />
       <div className="login-content">
         <body>
           {isUsernameValid ? (

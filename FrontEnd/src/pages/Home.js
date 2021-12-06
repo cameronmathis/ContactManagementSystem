@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 // import utils
 import { GetAllContacts } from "../utils/RestUtil";
 // import constants
-import { home } from "../constants/Pages";
+import { HOME } from "../constants/Pages";
 import {
   snackbarPosition,
   snackbarDuration,
@@ -56,7 +56,7 @@ function Home() {
 
   return (
     <div className="home">
-      <Header page={home} />
+      <Header page={HOME} />
       <body className="body">
         <ContactList
           setOpenContactId={setOpenContactId}
