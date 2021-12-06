@@ -33,7 +33,7 @@ _\* The two docker build commands only need to be ran once. After the images are
 ### Front-end
 
 Library: React 17.0.2 <br/>
-JRE: Node 10.0 <br/>
+JavaScript Interpreter: Node 10.0 <br/>
 
 ### API
 
