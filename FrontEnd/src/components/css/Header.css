@@ -61,6 +61,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .signUpButton .MuiSvgIcon-root {

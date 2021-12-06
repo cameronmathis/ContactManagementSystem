@@ -50,55 +50,57 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <div className="login-container">
-      <Header page={LOGIN} />
-      <div className="login-content">
-        <body>
-          {isUsernameValid ? (
-            <label className="usernameInput-label loginInput-label">
-              Username
-            </label>
-          ) : (
-            <label className="usernameInput-label loginInput-label-invalid">
-              Username
-            </label>
-          )}
-          <input
-            className="username-input login-input"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-          />
-          {isPasswordValid ? (
-            <label className="passwordInput-label loginInput-label">
-              Password
-            </label>
-          ) : (
-            <label className="passwordInput-label loginInput-label-invalid">
-              Password
-            </label>
-          )}
-          <input
-            type="password"
-            className="password-input login-input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-        </body>
-        <footer>
-          <div className="login-buttons">
-            <div className="submitLoginButton submitLogin-button">
-              <Button
-                variant="contained"
-                className="submitLogin-button"
-                onClick={submitLogin}
-              >
-                <div className="submitLogin-text">Login</div>
-              </Button>
+    <div className="login">
+      <div className="login-container">
+        <Header page={LOGIN} />
+        <div className="login-content">
+          <body>
+            {isUsernameValid ? (
+              <label className="usernameInput-label loginInput-label">
+                Username
+              </label>
+            ) : (
+              <label className="usernameInput-label loginInput-label-invalid">
+                Username
+              </label>
+            )}
+            <input
+              className="username-input login-input"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+            />
+            {isPasswordValid ? (
+              <label className="passwordInput-label loginInput-label">
+                Password
+              </label>
+            ) : (
+              <label className="passwordInput-label loginInput-label-invalid">
+                Password
+              </label>
+            )}
+            <input
+              type="password"
+              className="password-input login-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+          </body>
+          <footer>
+            <div className="login-buttons">
+              <div className="submitLoginButton submitLogin-button">
+                <Button
+                  variant="contained"
+                  className="submitLogin-button"
+                  onClick={submitLogin}
+                >
+                  <div className="submitLoginButton-text">Login</div>
+                </Button>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </div>
       </div>
     </div>
   );
