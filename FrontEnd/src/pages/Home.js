@@ -77,9 +77,9 @@ function Home() {
   };
 
   return (
-    <div className="home">
+    <div className="home-container">
       <Header page={HOME} updateContactsList={updateContactsList} />
-      <body className="body">
+      <body className="home-body">
         <ContactList
           setOpenContactId={setOpenContactId}
           setIsViewing={setIsViewing}

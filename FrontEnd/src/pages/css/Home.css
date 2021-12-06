@@ -1,4 +1,4 @@
-.home {
+.home-container {
   background-color: var(--clr-light);
   color: var(--clr-dark);
   font-family: var(--ff-primary);
@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-.body {
+.home-body {
   position: fixed;
   top: 6vh; /* Header height */
   width: 90vw;
