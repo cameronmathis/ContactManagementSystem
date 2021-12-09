@@ -1,6 +1,8 @@
-# Contact Management System
-
-This is a Contact Management System Web Application.
+ [![CodeFactor](https://www.codefactor.io/repository/github/cameronmathis/contactmanagementsystem/badge)](https://www.codefactor.io/repository/github/cameronmathis/contactmanagementsystem)
+ [![React Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml)
+ [![Maven Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/maven-build.yml)
+ 
+ # Contact Management System
 
 ## Table of contents
 
