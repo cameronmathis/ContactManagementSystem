@@ -46,11 +46,11 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: var(--txt-dark);
 }
 
 .loginInput-label {
   border-bottom: 2px solid var(--clr-accent);
-  color: var(--txt-dark);
 }
 
 .loginInput-label-invalid {
@@ -58,7 +58,7 @@
 }
 
 .login-input::placeholder {
-  color: var(--clr-dark);
+  color: var(--placeholder-clr);
 }
 
 .login-buttons {

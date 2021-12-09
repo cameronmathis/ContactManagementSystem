@@ -5,6 +5,7 @@
 .openedContactView-container header > h2 {
   margin: 0px 5px 5px 5px;
   color: var(--txt-dark);
+  font-size: var(--fs-h2);
 }
 
 .openedContactView-container > body {

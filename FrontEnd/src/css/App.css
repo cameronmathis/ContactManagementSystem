@@ -20,38 +20,30 @@
   --clr-destructive: #e16259;
   --clr-destructive-hover: #be534b;
 
-  --fs-h2: 2.25rem;
-  --fs-h3: 1.25rem;
+  --fs-h1: 2rem;
+  --fs-h2: 1.75rem;
   --fs-body: 1rem;
+}
 
+/* Light Mode Properties */
+:root,
+html[data-theme="light"] {
   --clr-light: #fffefc;
   --clr-medium: #e5e4e2;
   --clr-dark: #111111;
 
   --txt-light: #ffffff;
   --txt-dark: #111111;
-}
-
-/* Light Mode Properties */
-@media (prefers-color-scheme: light) {
-  :root {
-    --clr-light: #fffefc;
-    --clr-medium: #e5e4e2;
-    --clr-dark: #111111;
-
-    --txt-light: #ffffff;
-    --txt-dark: #111111;
-  }
+  --placeholder-clr: #646464;
 }
 
 /* Dark Mode Properties */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --clr-light: #111111;
-    --clr-medium: #5f5f5f;
-    --clr-dark: #bebebe;
+html[data-theme="dark"] {
+  --clr-light: #111111;
+  --clr-medium: #5f5f5f;
+  --clr-dark: #bebebe;
 
-    --txt-light: #111111;
-    --txt-dark: #ffffff;
-  }
+  --txt-light: #111111;
+  --txt-dark: #ffffff;
+  --placeholder-clr: #e5e4e2;
 }

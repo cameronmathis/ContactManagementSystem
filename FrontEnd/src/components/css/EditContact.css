@@ -5,6 +5,7 @@
 .openedContactEdit-container header > h2 {
   margin: 0px 5px 5px 5px;
   color: var(--txt-dark);
+  font-size: var(--fs-h2);
 }
 
 .openedContactEdit-container > body {
@@ -28,11 +29,11 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: var(--txt-dark);
 }
 
 .openedContactInput-label {
   border-bottom: 2px solid var(--clr-accent);
-  color: var(--txt-dark);
 }
 
 .openedContactInput-label-invalid {
@@ -53,7 +54,7 @@
 }
 
 .openedContact-input::placeholder {
-  color: var(--clr-dark);
+  color: var(--placeholder-clr);
 }
 
 .openedContactEdit-buttons {

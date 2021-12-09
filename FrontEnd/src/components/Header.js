@@ -17,6 +17,18 @@ const Header = ({ page, updateContactsList }) => {
   const [isCreateContactModalShown, setCreateContactModalShown] =
     useState(false);
 
+  function toggleTheme() {
+    var currentTheme = sessionStorage.getItem("data-theme");
+    var targetTheme = "light";
+
+    if (currentTheme === "light") {
+      targetTheme = "dark";
+    }
+
+    document.documentElement.setAttribute("data-theme", targetTheme);
+    sessionStorage.setItem("data-theme", targetTheme);
+  }
+
   function showNewContactModal() {
     setCreateContactModalShown(true);
   }
@@ -28,7 +40,9 @@ const Header = ({ page, updateContactsList }) => {
   return (
     <div className="header">
       <div className="headerLeft">
-        <h1>Contact Management System</h1>
+        <button className="toggleTheme-button" onClick={toggleTheme}>
+          <h1>Contact Management System</h1>
+        </button>
       </div>
       <div className="headerRight">
         {page === LOGIN ? (
