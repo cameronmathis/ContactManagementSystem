@@ -4,10 +4,15 @@ on:
   workflow_dispatch:
   
 jobs:
-  merge-branch:
+  merge:
+    name: Merge
     runs-on: ubuntu-latest
+    
     steps:
+      - name: Checkout code
       - uses: actions/checkout@v2
+      
+      - name: Merge code
       - uses: everlytic/branch-merge@1.1.2
         with:
           github_token: ${{ github.token }}
