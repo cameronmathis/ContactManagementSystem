@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import constants
-import { login, home } from "../constants/Pages";
+import { LOGIN, HOME } from "../constants/Pages";
 // import buttons
 import Button from "@material-ui/core/Button";
 // import icons
@@ -11,11 +11,23 @@ import CreateContactModal from "../modals/CreateContactModal";
 // import css
 import "./css/Header.css";
 
-const Header = ({ page }) => {
+const Header = ({ page, updateContactsList }) => {
   const navigate = useNavigate();
 
   const [isCreateContactModalShown, setCreateContactModalShown] =
     useState(false);
+
+  function toggleTheme() {
+    var currentTheme = sessionStorage.getItem("data-theme");
+    var targetTheme = "light";
+
+    if (currentTheme === "light") {
+      targetTheme = "dark";
+    }
+
+    document.documentElement.setAttribute("data-theme", targetTheme);
+    sessionStorage.setItem("data-theme", targetTheme);
+  }
 
   function showNewContactModal() {
     setCreateContactModalShown(true);
@@ -28,10 +40,12 @@ const Header = ({ page }) => {
   return (
     <div className="header">
       <div className="headerLeft">
-        <h1>Contact Management System</h1>
+        <button className="toggleTheme-button" onClick={toggleTheme}>
+          <h1>Contact Management System</h1>
+        </button>
       </div>
       <div className="headerRight">
-        {page === login ? (
+        {page === LOGIN ? (
           <div className="signUpButton">
             <Button
               variant="contained"
@@ -42,7 +56,7 @@ const Header = ({ page }) => {
             </Button>
           </div>
         ) : null}
-        {page === home ? (
+        {page === HOME ? (
           <div className="newContactButton">
             <Button
               variant="contained"
@@ -50,12 +64,17 @@ const Header = ({ page }) => {
               onClick={showNewContactModal}
             >
               <div className="newContactButton-text">New Contact</div>
-              <div className="newContactButton-spacer"></div>
-              <AddIcon className="newContactButton-icon" fontSize="medium" />
+              <div className="newContactButton-spacer" />
+              <AddIcon
+                className="newContactButton-icon"
+                fontSize="medium"
+                htmlColor="#ffffff"
+              />
             </Button>
             <CreateContactModal
               isCreateContactModalShown={isCreateContactModalShown}
               setCreateContactModalShown={setCreateContactModalShown}
+              updateContactsList={updateContactsList}
             />
           </div>
         ) : null}

@@ -2,18 +2,20 @@
   border-bottom: 2px solid var(--clr-medium);
 }
 
-.openedContactEdit-container > header > h2 {
-  margin: 0px 5px 5px 5px;
+.openedContactEdit-container header > h2 {
+  margin: 0 5px 5px;
+  color: var(--txt-dark);
+  font-size: var(--fs-h2);
 }
 
 .openedContactEdit-container > body {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .openedContactInput-container {
-  margin: 10px 0px;
+  margin: 10px 0;
   padding: 5px;
   border-radius: 10px;
   border: 1px solid var(--clr-medium);
@@ -23,10 +25,11 @@
 .openedContactInput-label-invalid {
   width: min-content;
   font-size: larger;
-  margin: 0px 5px;
+  margin: 0 5px;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: var(--txt-dark);
 }
 
 .openedContactInput-label {
@@ -41,13 +44,17 @@
   width: 100%;
   line-height: 30px;
   font-size: larger;
-  margin: 5px 0px;
-  padding: 0px 10px;
+  margin: 5px 0;
+  padding: 0 10px;
   outline: none;
   border: none;
   border-radius: 5px;
-  color: var(--clr-dark);
+  color: var(--txt-dark);
   background-color: var(--clr-medium);
+}
+
+.openedContact-input::placeholder {
+  color: var(--placeholder-clr);
 }
 
 .openedContactEdit-buttons {
@@ -56,7 +63,7 @@
 }
 
 .openedContactEdit-button {
-  margin: 0px 5px 0px 5px;
+  margin: 0 5px;
 }
 
 .cancelEditContactButton > .MuiButton-root {
@@ -76,6 +83,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .submitEditContactButton > .MuiButton-root {
@@ -95,4 +103,5 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CreateUser } from "../utils/RestUtil";
 import { getIsStringValid } from "../utils/ValidationUtil";
 // import constants
-import { signUp } from "../constants/Pages";
+import { SIGN_UP } from "../constants/Pages";
 import {
   snackbarPosition,
   snackbarDuration,
@@ -22,7 +22,7 @@ import Alert from "@material-ui/lab/Alert";
 // import css
 import "./css/SignUp.css";
 
-function SignUp() {
+const SignUp = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -43,6 +43,7 @@ function SignUp() {
         .then(() => {
           setIsUsernameTaken(false);
           setIsSnackbarOpen(false);
+          setIsLoggedIn(true);
           navigate("/home");
         })
         .catch((error) => {
@@ -87,104 +88,106 @@ function SignUp() {
   };
 
   return (
-    <div className="signUp-container">
-      <Header page={signUp} />
-      <div className="signUp-content">
-        <body>
-          {isUsernameValid ? (
-            <label className="usernameInput-label signUpInput-label">
-              Username
-            </label>
-          ) : (
-            <label className="usernameInput-label signUpInput-label-invalid">
-              Username
-            </label>
-          )}
-          <input
-            className="username-input signUp-input"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-          />
-          {isPasswordOneValid ? (
-            <label className="passwordOneInput-label signUpInput-label">
-              Password
-            </label>
-          ) : (
-            <label className="passwordOneInput-label signUpInput-label-invalid">
-              Password
-            </label>
-          )}
-          <input
-            type="password"
-            className="passwordOne-input signUp-input"
-            value={passwordOne}
-            onChange={(e) => setPasswordOne(e.target.value)}
-            placeholder="Password"
-          />
-          {isPasswordTwoValid ? (
-            <label className="passwordTwoInput-label signUpInput-label">
-              Password
-            </label>
-          ) : (
-            <label className="passwordTwoInput-label signUpInput-label-invalid">
-              Password
-            </label>
-          )}
-          <input
-            type="password"
-            className="passwordTwo-input signUp-input"
-            value={passwordTwo}
-            onChange={(e) => setPasswordTwo(e.target.value)}
-            placeholder="Password"
-          />
-          {doPasswordsMatch ? null : (
-            <label className="doPasswordsMatch-label signUpInput-label-invalid">
-              Passwords do not match.
-            </label>
-          )}
-        </body>
-        <footer>
-          <div className="login-buttons">
-            <div className="submitSignUpButton submitSignUp-button">
-              <Button
-                variant="contained"
-                className="submitSignUp-button"
-                onClick={submitSignUp}
-              >
-                <div className="submitSignUp-text">Sign-Up</div>
-              </Button>
+    <div className="signUp">
+      <div className="signUp-container">
+        <Header page={SIGN_UP} />
+        <div className="signUp-content">
+          <body>
+            {isUsernameValid ? (
+              <label className="usernameInput-label signUpInput-label">
+                Username
+              </label>
+            ) : (
+              <label className="usernameInput-label signUpInput-label-invalid">
+                Username
+              </label>
+            )}
+            <input
+              className="username-input signUp-input"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+            />
+            {isPasswordOneValid ? (
+              <label className="passwordOneInput-label signUpInput-label">
+                Password
+              </label>
+            ) : (
+              <label className="passwordOneInput-label signUpInput-label-invalid">
+                Password
+              </label>
+            )}
+            <input
+              type="password"
+              className="passwordOne-input signUp-input"
+              value={passwordOne}
+              onChange={(e) => setPasswordOne(e.target.value)}
+              placeholder="Password"
+            />
+            {isPasswordTwoValid ? (
+              <label className="passwordTwoInput-label signUpInput-label">
+                Password
+              </label>
+            ) : (
+              <label className="passwordTwoInput-label signUpInput-label-invalid">
+                Password
+              </label>
+            )}
+            <input
+              type="password"
+              className="passwordTwo-input signUp-input"
+              value={passwordTwo}
+              onChange={(e) => setPasswordTwo(e.target.value)}
+              placeholder="Password"
+            />
+            {doPasswordsMatch ? null : (
+              <label className="doPasswordsMatch-label signUpInput-label-invalid">
+                Passwords do not match.
+              </label>
+            )}
+          </body>
+          <footer>
+            <div className="login-buttons">
+              <div className="submitSignUpButton submitSignUp-button">
+                <Button
+                  variant="contained"
+                  className="submitSignUp-button"
+                  onClick={submitSignUp}
+                >
+                  <div className="submitSignUpButton-text">Sign-Up</div>
+                </Button>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </div>
+        <Snackbar
+          anchorOrigin={snackbarPosition}
+          open={isSnackbarOpen}
+          autoHideDuration={snackbarDuration}
+          onClose={() => setIsSnackbarOpen(false)}
+        >
+          {isUsernameTaken ? (
+            <Alert
+              onClose={() => setIsSnackbarOpen(false)}
+              severity="error"
+              sx={{ width: "100%" }}
+            >
+              {usernameTakenMessage}
+            </Alert>
+          ) : null}
+          {!isUsernameTaken ? (
+            <Alert
+              onClose={() => setIsSnackbarOpen(false)}
+              severity="error"
+              sx={{ width: "100%" }}
+            >
+              {signUpFailMessage}
+            </Alert>
+          ) : null}
+        </Snackbar>
       </div>
-      <Snackbar
-        anchorOrigin={snackbarPosition}
-        open={isSnackbarOpen}
-        autoHideDuration={snackbarDuration}
-        onClose={() => setIsSnackbarOpen(false)}
-      >
-        {isUsernameTaken ? (
-          <Alert
-            onClose={() => setIsSnackbarOpen(false)}
-            severity="error"
-            sx={{ width: "100%" }}
-          >
-            {usernameTakenMessage}
-          </Alert>
-        ) : null}
-        {!isUsernameTaken ? (
-          <Alert
-            onClose={() => setIsSnackbarOpen(false)}
-            severity="error"
-            sx={{ width: "100%" }}
-          >
-            {signUpFailMessage}
-          </Alert>
-        ) : null}
-      </Snackbar>
     </div>
   );
-}
+};
 
 export default SignUp;

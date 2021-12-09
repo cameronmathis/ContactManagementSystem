@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-.body {
+.home-content {
   position: fixed;
   top: 6vh; /* Header height */
   width: 90vw;

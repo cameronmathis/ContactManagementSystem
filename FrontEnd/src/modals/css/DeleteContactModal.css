@@ -10,12 +10,15 @@
 
 .deleteContactModal-content > header > h2 {
   margin: 5px;
+  color: var(--txt-dark);
+  font-size: var(--fs-h2);
 }
 
 .deleteContactModal-content > body {
   display: flex;
   flex-direction: column;
   margin: 10px 5px;
+  color: var(--txt-dark);
 }
 
 .deleteContactModal-buttons {
@@ -44,6 +47,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .submitDeleteContactButton > .MuiButton-root {
@@ -63,4 +67,5 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }

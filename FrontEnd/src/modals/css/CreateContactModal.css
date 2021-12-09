@@ -10,20 +10,22 @@
 
 .createContactModal-content > header > h2 {
   margin: 5px;
+  color: var(--txt-dark);
+  font-size: var(--fs-h2);
 }
 
 .createContactModal-content > body {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .createContactModal-input,
 .createContactModal-input-invalid {
   line-height: 30px;
   font-size: larger;
-  margin: 5px 0px;
-  padding: 0px 10px;
+  margin: 5px 0;
+  padding: 0 10px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -31,7 +33,11 @@
 }
 
 .createContactModal-input {
-  color: var(--clr-dark);
+  color: var(--txt-dark);
+}
+
+.createContactModal-input::placeholder {
+  color: var(--placeholder-clr);
 }
 
 .createContactModal-input-invalid {
@@ -48,7 +54,7 @@
 }
 
 .createContactModal-button {
-  margin: 0px 5px 0px 5px;
+  margin: 0 5px;
 }
 
 .cancelNewContactButton > .MuiButton-root {
@@ -68,6 +74,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .submitNewContactButton > .MuiButton-root {
@@ -87,4 +94,5 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }

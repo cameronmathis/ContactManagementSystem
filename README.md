@@ -1,6 +1,11 @@
-# Contact Management System
+ [![license](https://img.shields.io/github/license/cameronmathis/ContactManagementSystem)](LICENSE)
+ [![React Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml)
+ [![Maven Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/maven-build.yml)
+[![CodeQL](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/codeql-analysis.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/cameronmathis/contactmanagementsystem/badge)](https://www.codefactor.io/repository/github/cameronmathis/contactmanagementsystem)
 
-This is a Contact Management System Web Application.
+ 
+ # Contact Management System
 
 ## Table of contents
 
@@ -32,8 +37,8 @@ _\* The two docker build commands only need to be ran once. After the images are
 
 ### Front-end
 
-Library: React 0.1.0 <br/>
-JRE: Node 10.0 <br/>
+Library: React 17.0.2 <br/>
+JavaScript Interpreter: Node 10.0 <br/>
 
 ### API
 
@@ -45,8 +50,8 @@ Database: PostgreSQL 9.6 <br/>
 
 ### Other
 
-Hosting Platform: Personal Ubuntu Server <br/>
 Container Management Framework: Docker <br/>
+Hosting Platform: Personal Ubuntu Server <br/>
 
 ## Status
 
