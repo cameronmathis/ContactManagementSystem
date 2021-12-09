@@ -1,7 +1,9 @@
- [![CodeFactor](https://www.codefactor.io/repository/github/cameronmathis/contactmanagementsystem/badge)](https://www.codefactor.io/repository/github/cameronmathis/contactmanagementsystem)
+ [![license](https://img.shields.io/github/license/cameronmathis/ContactManagementSystem)](LICENSE)
  [![React Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/react-build.yml)
  [![Maven Build](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/maven-build.yml)
 [![CodeQL](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/cameronmathis/ContactManagementSystem/actions/workflows/codeql-analysis.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/cameronmathis/contactmanagementsystem/badge)](https://www.codefactor.io/repository/github/cameronmathis/contactmanagementsystem)
+
  
  # Contact Management System
 
