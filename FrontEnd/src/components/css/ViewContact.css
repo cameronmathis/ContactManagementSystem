@@ -3,7 +3,7 @@
 }
 
 .openedContactView-container header > h2 {
-  margin: 0px 5px 5px 5px;
+  margin: 0 5px 5px;
   color: var(--txt-dark);
   font-size: var(--fs-h2);
 }
@@ -11,11 +11,11 @@
 .openedContactView-container > body {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .openedContactField-container {
-  margin: 10px 0px;
+  margin: 10px 0;
   padding: 5px;
   border-radius: 10px;
   border: 1px solid var(--clr-medium);
@@ -24,7 +24,7 @@
 .openedContactField-label {
   width: min-content;
   font-size: larger;
-  margin: 0px 5px;
+  margin: 0 5px;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -36,8 +36,8 @@
   width: 100%;
   line-height: 30px;
   font-size: larger;
-  margin: 5px 0px;
-  padding: 0px 10px;
+  margin: 5px 0;
+  padding: 0 10px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -51,7 +51,7 @@
 }
 
 .openedContactView-button {
-  margin: 0px 5px 0px 5px;
+  margin: 0 5px;
 }
 
 .deleteContactButton > .MuiButton-root {

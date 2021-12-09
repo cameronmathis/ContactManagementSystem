@@ -23,14 +23,14 @@
 .signUp-content > body {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .signUp-input {
   line-height: 30px;
   font-size: larger;
-  margin: 5px 0px;
-  padding: 0px 10px;
+  margin: 5px 0;
+  padding: 0 10px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -42,7 +42,7 @@
 .signUpInput-label-invalid {
   width: min-content;
   font-size: larger;
-  margin: 0px 5px;
+  margin: 0 5px;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -71,7 +71,7 @@
 }
 
 .submitSignUpButton-button {
-  margin: 0px 5px 0px 5px;
+  margin: 0 5px;
 }
 
 .submitSignUpButton > .MuiButton-root {
