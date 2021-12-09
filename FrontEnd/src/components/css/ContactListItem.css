@@ -1,3 +1,7 @@
+.contactListItem {
+  border: 1px solid var(--clr-medium);
+}
+
 .contactListItem,
 .contactListItem-selected {
   padding: 10px;
@@ -9,7 +13,6 @@
   justify-content: left;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid var(--clr-medium);
 }
 
 .contactListItem:hover {
@@ -27,4 +30,5 @@
 
 .contactListItem-text {
   font-size: x-large;
+  color: var(--txt-dark);
 }

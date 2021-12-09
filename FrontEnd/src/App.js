@@ -19,6 +19,7 @@ function App() {
   const [isLoggedIn, setIsLoggedInState] = useState(false);
 
   useEffect(() => {
+    sessionStorage.setItem("data-theme", "light");
     setIsLoggedInState(window.sessionStorage.getItem("isLoggedIn"));
   }, [isLoggedIn]);
 

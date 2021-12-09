@@ -10,6 +10,8 @@
 
 .createContactModal-content > header > h2 {
   margin: 5px;
+  color: var(--txt-dark);
+  font-size: var(--fs-h2);
 }
 
 .createContactModal-content > body {
@@ -31,7 +33,11 @@
 }
 
 .createContactModal-input {
-  color: var(--clr-dark);
+  color: var(--txt-dark);
+}
+
+.createContactModal-input::placeholder {
+  color: var(--placeholder-clr);
 }
 
 .createContactModal-input-invalid {
@@ -68,6 +74,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .submitNewContactButton > .MuiButton-root {
@@ -87,4 +94,5 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }

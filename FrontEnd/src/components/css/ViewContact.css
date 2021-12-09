@@ -2,8 +2,10 @@
   border-bottom: 2px solid var(--clr-medium);
 }
 
-.openedContactView-container > header > h2 {
+.openedContactView-container header > h2 {
   margin: 0px 5px 5px 5px;
+  color: var(--txt-dark);
+  font-size: var(--fs-h2);
 }
 
 .openedContactView-container > body {
@@ -27,6 +29,7 @@
   overflow: hidden;
   white-space: nowrap;
   border-bottom: 2px solid var(--clr-accent);
+  color: var(--txt-dark);
 }
 
 .openedContactField-value {
@@ -38,8 +41,8 @@
   outline: none;
   border: none;
   border-radius: 5px;
-  color: var(--clr-dark);
   background-color: var(--clr-medium);
+  color: var(--txt-dark);
 }
 
 .openedContactView-buttons {
@@ -68,6 +71,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
 
 .editContactButton > .MuiButton-root {
@@ -87,4 +91,5 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
 }
